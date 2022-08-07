@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +176,7 @@ return [
         /*
          * Package Service Providers...
          */
+
 
         /*
          * Application Service Providers...

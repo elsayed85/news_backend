@@ -9,3 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::impersonate();
+
+
+Route::get("test", function () {
+    return getLocalIp();
+});

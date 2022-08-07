@@ -24,9 +24,14 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "livewire/livewire": "^2.0",
+        "martin-ro/filament-charcount-field": "^0.1.5",
+        "phpsa/filament-authentication": "^2.1",
+        "phpsa/filament-feed": "^1.0",
         "pusher/pusher-php-server": "~7.0",
         "pxlrbt/filament-spotlight": "^0.3.2",
-        "spatie/laravel-medialibrary": "^9.0.0"
+        "spatie/laravel-medialibrary": "^9.0.0",
+        "stechstudio/filament-impersonate": "^2.5",
+        "stephenjude/filament-blog": "^0.1.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -55,7 +60,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/global.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
