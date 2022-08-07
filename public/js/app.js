@@ -2114,7 +2114,7 @@ function initialState() {
           _this2.device_id = data.device_id;
           window.localECHO = new laravel_echo__WEBPACK_IMPORTED_MODULE_10__.default({
             broadcaster: "pusher",
-            key: "f6a8426a0df0cede4947",
+            key: "6c308f4bdb1354c4d28d",
             cluster: "mt1",
             forceTLS: false,
             wsHost: window.location.hostname,
@@ -2328,7 +2328,7 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__.default({
   broadcaster: "pusher",
-  key: "f6a8426a0df0cede4947",
+  key: "6c308f4bdb1354c4d28d",
   cluster: "mt1",
   forceTLS: false,
   wsHost: window.location.hostname,
@@ -6844,7 +6844,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.bulb img {\n    width:50px\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.bulb img {\r\n    width:50px\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6892,7 +6892,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.heart_card {\n  position: relative;\n  width: 186px;\n  height: 171px;\n  background: #ee462b;\n  box-shadow: 0 7px 8px -4px rgba(148, 13, 0, 0.2),\n    0 12px 17px 2px rgba(148, 13, 0, 0.14),\n    0 5px 22px 4px rgba(148, 13, 0, 0.12);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.heart_card .heart {\n  position: relative;\n  margin-top: 25px;\n  margin-left: 16px;\n}\n.heart_card .heart-icon {\n  fill: #fff;\n  -webkit-animation: beat 0.5s infinite alternate;\n          animation: beat 0.5s infinite alternate;\n  transform-origin: center;\n}\n.heart_card .circle-ripple {\n  position: absolute;\n  left: 24px;\n  top: 30.5px;\n  background-color: #fff;\n  width: 0.5em;\n  height: 0.5em;\n  border-radius: 50%;\n  -webkit-animation: ripple 0.5s linear infinite;\n          animation: ripple 0.5s linear infinite;\n}\n.heart_card .stop{\n    -webkit-animation-play-state: paused;\n            animation-play-state: paused;\n}\n.heart_card .beat{\n    -webkit-animation-play-state: running;\n            animation-play-state: running;\n}\n.heart_card h2 {\n  display: inline-block;\n  font-size: 40px;\n  color: #fff;\n  letter-spacing: 0.52px;\n  line-height: 34px;\n  margin-top: 13px;\n  font-weight: 300;\n  margin-left: 16px;\n  margin-bottom: 0;\n  z-index: 2;\n  position: relative;\n}\n.heart_card p {\n  font-size: 16px;\n  color: rgba(235, 235, 245, 0.6);\n  letter-spacing: -0.32px;\n  line-height: 21px;\n  margin-top: 6px;\n  margin-left: 16px;\n  margin-bottom: 0;\n  z-index: 2;\n  position: relative;\n}\n.heart_card h1 {\n  font-size: 17px;\n  color: #fff;\n  letter-spacing: -0.41px;\n  line-height: 22px;\n  margin-top: 4px;\n  margin-left: 16px;\n  margin-bottom: 0;\n  font-weight: 600;\n  z-index: 2;\n  position: relative;\n}\n@-webkit-keyframes ripple {\n0% {\n    box-shadow: 0 0 0 0 rgba(148, 13, 0, 0.15), 0 0 0 1em rgba(148, 13, 0, 0.15),\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15);\n}\n100% {\n    box-shadow: 0 0 0 1em rgba(148, 13, 0, 0.15),\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15),\n      0 0 0 12em rgba(148, 13, 0, 0);\n}\n}\n@keyframes ripple {\n0% {\n    box-shadow: 0 0 0 0 rgba(148, 13, 0, 0.15), 0 0 0 1em rgba(148, 13, 0, 0.15),\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15);\n}\n100% {\n    box-shadow: 0 0 0 1em rgba(148, 13, 0, 0.15),\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15),\n      0 0 0 12em rgba(148, 13, 0, 0);\n}\n}\n@-webkit-keyframes beat {\nto {\n    transform: scale(1.4);\n}\n}\n@keyframes beat {\nto {\n    transform: scale(1.4);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.heart_card {\r\n  position: relative;\r\n  width: 186px;\r\n  height: 171px;\r\n  background: #ee462b;\r\n  box-shadow: 0 7px 8px -4px rgba(148, 13, 0, 0.2),\r\n    0 12px 17px 2px rgba(148, 13, 0, 0.14),\r\n    0 5px 22px 4px rgba(148, 13, 0, 0.12);\r\n  border-radius: 10px;\r\n  overflow: hidden;\n}\n.heart_card .heart {\r\n  position: relative;\r\n  margin-top: 25px;\r\n  margin-left: 16px;\n}\n.heart_card .heart-icon {\r\n  fill: #fff;\r\n  -webkit-animation: beat 0.5s infinite alternate;\r\n          animation: beat 0.5s infinite alternate;\r\n  transform-origin: center;\n}\n.heart_card .circle-ripple {\r\n  position: absolute;\r\n  left: 24px;\r\n  top: 30.5px;\r\n  background-color: #fff;\r\n  width: 0.5em;\r\n  height: 0.5em;\r\n  border-radius: 50%;\r\n  -webkit-animation: ripple 0.5s linear infinite;\r\n          animation: ripple 0.5s linear infinite;\n}\n.heart_card .stop{\r\n    -webkit-animation-play-state: paused;\r\n            animation-play-state: paused;\n}\n.heart_card .beat{\r\n    -webkit-animation-play-state: running;\r\n            animation-play-state: running;\n}\n.heart_card h2 {\r\n  display: inline-block;\r\n  font-size: 40px;\r\n  color: #fff;\r\n  letter-spacing: 0.52px;\r\n  line-height: 34px;\r\n  margin-top: 13px;\r\n  font-weight: 300;\r\n  margin-left: 16px;\r\n  margin-bottom: 0;\r\n  z-index: 2;\r\n  position: relative;\n}\n.heart_card p {\r\n  font-size: 16px;\r\n  color: rgba(235, 235, 245, 0.6);\r\n  letter-spacing: -0.32px;\r\n  line-height: 21px;\r\n  margin-top: 6px;\r\n  margin-left: 16px;\r\n  margin-bottom: 0;\r\n  z-index: 2;\r\n  position: relative;\n}\n.heart_card h1 {\r\n  font-size: 17px;\r\n  color: #fff;\r\n  letter-spacing: -0.41px;\r\n  line-height: 22px;\r\n  margin-top: 4px;\r\n  margin-left: 16px;\r\n  margin-bottom: 0;\r\n  font-weight: 600;\r\n  z-index: 2;\r\n  position: relative;\n}\n@-webkit-keyframes ripple {\n0% {\r\n    box-shadow: 0 0 0 0 rgba(148, 13, 0, 0.15), 0 0 0 1em rgba(148, 13, 0, 0.15),\r\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15);\n}\n100% {\r\n    box-shadow: 0 0 0 1em rgba(148, 13, 0, 0.15),\r\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15),\r\n      0 0 0 12em rgba(148, 13, 0, 0);\n}\n}\n@keyframes ripple {\n0% {\r\n    box-shadow: 0 0 0 0 rgba(148, 13, 0, 0.15), 0 0 0 1em rgba(148, 13, 0, 0.15),\r\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15);\n}\n100% {\r\n    box-shadow: 0 0 0 1em rgba(148, 13, 0, 0.15),\r\n      0 0 0 5em rgba(148, 13, 0, 0.15), 0 0 0 10em rgba(148, 13, 0, 0.15),\r\n      0 0 0 12em rgba(148, 13, 0, 0);\n}\n}\n@-webkit-keyframes beat {\nto {\r\n    transform: scale(1.4);\n}\n}\n@keyframes beat {\nto {\r\n    transform: scale(1.4);\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48637,7 +48637,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                        show / hide\n                    "
+                      "\r\n                        show / hide\r\n                    "
                     )
                   ]
                 ),
@@ -48653,9 +48653,9 @@ var render = function() {
                 )
               ])
             : _c("div", [
-                _vm._v("\n                    Device "),
+                _vm._v("\r\n                    Device "),
                 _c("b", [_c("mark", [_vm._v(_vm._s(_vm.device_id))])]),
-                _vm._v(" is connected now :)\n                    "),
+                _vm._v(" is connected now :)\r\n                    "),
                 _c("br"),
                 _vm._v(" "),
                 _c(
@@ -48801,7 +48801,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    Payload\n                                "
+              "\r\n                                    Payload\r\n                                "
             )
           ]
         ),
@@ -48814,7 +48814,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    Created At\n                                "
+              "\r\n                                    Created At\r\n                                "
             )
           ]
         )
