@@ -1,0 +1,170 @@
+body {
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+}
+
+a {
+    text-decoration: unset;
+}
+
+.controls-lv {
+    float: left;
+}
+
+.search_form {
+    float: right;
+}
+
+.menu_logo {
+    float: right;
+}
+
+.logo {
+    margin-left: unset;
+    margin-right: 26px;
+    float: right;
+}
+
+a.menu {
+    float: right;
+}
+
+.controls-lv li {
+    margin-right: unset;
+    margin-left: 26px;
+}
+
+.account-menu {
+    right: unset;
+    left: 0;
+    text-align: right;
+}
+
+.side_menu.active {
+    left: unset;
+    right: 0;
+    text-align: right;
+}
+
+.mm_menu li span {
+    float: right;
+}
+
+.side_menu {
+    left: unset;
+    right: -265px;
+}
+
+.vid_thumbainl .watch_later,
+.vidz_img .watch_later {
+    right: unset;
+    left: 5px;
+}
+
+.banner-section {
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(0 0 0 / 38%));
+}
+
+.vidz_list {
+    direction: rtl;
+}
+
+.search_form form input {
+    text-align: right;
+}
+
+.search_form form button {
+    right: unset;
+    left: 7px;
+}
+
+.mm_menu .switch {
+    right: unset;
+    left: 33px;
+}
+
+.account-menu h4 {
+    padding: unset;
+    padding-right: 30px;
+}
+
+.menu_logo img {
+    width: 96px;
+}
+
+.info-pr>span {
+    float: right;
+}
+
+.pr_links {
+    float: left;
+    text-align: left;
+}
+
+.pr_links li {
+    margin-right: unset;
+    margin-left: 21px;
+}
+
+.vcp_inf.cr {
+    float: right;
+    text-align: right;
+}
+
+.df-list {
+    float: left;
+}
+
+.vc_hd {
+    float: right;
+}
+
+.sm-vidz {
+    float: right;
+}
+
+.vid_thumbainl:hover .watch_later,
+.vidz_img:hover .watch_later {
+    right: unset;
+    left: 7px;
+}
+
+.pr_links:before {
+    right: unset;
+    left: 12px;
+}
+
+.vid-time {
+    right: unset;
+    left: 0px;
+    bottom: 2px;
+}
+
+.info-pr-sec .search_form {
+    float: left!important;
+}
+
+.decp_cotnet {
+    max-width: none!important;
+}
+
+
+.amz-lg {
+    float: left;
+}
+
+.amz-hd {
+    float: right;
+}
+
+.amz-img-inf {
+    direction: rtl;
+}
+
+.browse_categories {
+    direction: rtl;
+}
+
+.history-lst .nav-tabs {
+    float: right;
+}

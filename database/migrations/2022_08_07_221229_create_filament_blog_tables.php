@@ -26,11 +26,9 @@ return new class () extends Migration {
         Schema::create('blog_authors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->string('photo')->nullable();
             $table->longText('bio')->nullable();
-            $table->string('github_handle')->nullable();
-            $table->string('twitter_handle')->nullable();
             $table->timestamps();
         });
 
@@ -43,7 +41,7 @@ return new class () extends Migration {
             $table->text('excerpt')->nullable();
             $table->string('banner')->nullable();
             $table->longText('content');
-            $table->date('published_at')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

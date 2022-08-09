@@ -16,8 +16,8 @@ return [
 
     'fields' => [
 
-        'email' => [
-            'label' => 'البريد الإلكتروني',
+        'username' => [
+            'label' => 'اسم المسخدم',
         ],
 
         'password' => [

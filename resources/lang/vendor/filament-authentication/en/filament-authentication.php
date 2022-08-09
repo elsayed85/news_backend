@@ -14,7 +14,7 @@ return [
     */
     'field.id'                      => 'ID',
     'field.user.name'               => 'Name',
-    'field.user.email'              => 'Email',
+    'field.user.username'           => 'UserName',
     'field.user.roles'              => 'Roles',
     'field.user.verified_at'        => 'Verified',
     'field.user.created_at'         => 'Joined',

@@ -31,6 +31,40 @@ use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\CreateUser;
 
 class UserResource extends BaseUserResource
 {
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Card::make()
+                    ->schema([
+                        TextInput::make('name')
+                            ->label(strval(__('filament-authentication::filament-authentication.field.user.name')))
+                            ->required(),
+                        TextInput::make('username')
+                            ->required()
+                            ->unique(table: User::class, ignorable: fn (?User $record): ?User => $record)
+                             ->label(strval(__('filament-authentication::filament-authentication.field.user.username'))),
+                        TextInput::make('password')
+                            ->same('passwordConfirmation')
+                            ->password()
+                            ->maxLength(255)
+                            ->required(fn($component, $get, $livewire, $model, $record, $set, $state) =>  $record === null)
+                            ->dehydrateStateUsing(fn ($state) => ! empty($state) ? Hash::make($state) : "")
+                             ->label(strval(__('filament-authentication::filament-authentication.field.user.password'))),
+                        TextInput::make('passwordConfirmation')
+                            ->password()
+                            ->dehydrated(false)
+                            ->maxLength(255)
+                             ->label(strval(__('filament-authentication::filament-authentication.field.user.confirm_password'))),
+                        BelongsToManyMultiSelect::make('roles')
+                            ->relationship('roles', 'name')
+                             ->preload(config('filament-authentication.preload_roles'))
+                             ->label(strval(__('filament-authentication::filament-authentication.field.user.roles')))
+                    ])->columns(2),
+            ]);
+    }
+
     public static function table(Table $table): Table
     {
 
@@ -41,19 +75,19 @@ class UserResource extends BaseUserResource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()->label(strval(__('filament-authentication::filament-authentication.field.user.name'))),
-                TextColumn::make('email')
+                TextColumn::make('username')
                     ->searchable()
-                    ->sortable()->label(strval(__('filament-authentication::filament-authentication.field.user.email'))),
-                IconColumn::make('email_verified_at')
-                    ->options([
-                        'heroicon-o-check-circle',
-                        'heroicon-o-x-circle' => fn ($state): bool => $state === null,
-                    ])
-                    ->colors([
-                        'success',
-                        'danger' => fn ($state): bool => $state === null
-                    ])
-                    ->label(strval(__('filament-authentication::filament-authentication.field.user.verified_at'))),
+                    ->sortable()->label(strval(__('filament-authentication::filament-authentication.field.user.username'))),
+                // IconColumn::make('email_verified_at')
+                //     ->options([
+                //         'heroicon-o-check-circle',
+                //         'heroicon-o-x-circle' => fn ($state): bool => $state === null,
+                //     ])
+                //     ->colors([
+                //         'success',
+                //         'danger' => fn ($state): bool => $state === null
+                //     ])
+                //     ->label(strval(__('filament-authentication::filament-authentication.field.user.verified_at'))),
                 // IconColumn::make('roles')
                 //     ->tooltip(
                 //         fn (User $record): string => $record->getRoleNames()->implode(",\n")
@@ -69,9 +103,9 @@ class UserResource extends BaseUserResource
                     ->label(strval(__('filament-authentication::filament-authentication.field.user.created_at')))
             ])
             ->filters([
-                TernaryFilter::make('email_verified_at')
-                    ->label(strval(__('filament-authentication::filament-authentication.filter.verified')))
-                    ->nullable(),
+                // TernaryFilter::make('email_verified_at')
+                //     ->label(strval(__('filament-authentication::filament-authentication.filter.verified')))
+                //     ->nullable(),
 
             ])
             ->prependActions([

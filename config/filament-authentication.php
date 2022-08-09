@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Pages\FilamentAuthentication\Profile;
 use App\Filament\Resources\UserResource;
 
 return [
@@ -9,7 +10,7 @@ return [
         'PermissionResource' => \Phpsa\FilamentAuthentication\Resources\PermissionResource::class,
     ],
     'pages'         => [
-        'Profile' => \Phpsa\FilamentAuthentication\Pages\Profile::class
+        'Profile' => Profile::class,
     ],
     'Widgets'       => [
         'LatestUsers' => [

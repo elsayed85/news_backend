@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53dde346568a99d35911934b4e98b3df",
+    "content-hash": "a48b43d3a60645c175715d22a8094230",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -211,6 +211,95 @@
                 "source": "https://github.com/beyondcode/laravel-websockets/tree/1.13.1"
             },
             "time": "2022-03-03T08:41:47+00:00"
+        },
+        {
+            "name": "bezhansalleh/filament-shield",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bezhanSalleh/filament-shield.git",
+                "reference": "33b8f9773ed6826193ca7b38b4354648b4fbf9c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bezhanSalleh/filament-shield/zipball/33b8f9773ed6826193ca7b38b4354648b4fbf9c2",
+                "reference": "33b8f9773ed6826193ca7b38b4354648b4fbf9c2",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.13",
+                "illuminate/contracts": "^8.6|^9.0",
+                "php": "^8.0|^8.1",
+                "spatie/invade": "^1.0",
+                "spatie/laravel-package-tools": "^1.9.2",
+                "spatie/laravel-permission": "^5.0"
+            },
+            "require-dev": {
+                "barryvdh/laravel-ide-helper": "^2.12",
+                "friendsofphp/php-cs-fixer": "^3.9",
+                "nunomaduro/collision": "^5.0|^6.0",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^6.0|^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BezhanSalleh\\FilamentShield\\FilamentShieldServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentShield": "BezhanSalleh\\FilamentShield\\Facades\\FilamentShield"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BezhanSalleh\\FilamentShield\\": "src",
+                    "BezhanSalleh\\FilamentShield\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bezhan Salleh",
+                    "email": "bezhan_salleh@yahoo.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Filament support for `spatie/laravel-permission`.",
+            "homepage": "https://github.com/bezhansalleh/filament-shield",
+            "keywords": [
+                "acl",
+                "bezhanSalleh",
+                "filament",
+                "filament-shield",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/bezhanSalleh/filament-shield/issues",
+                "source": "https://github.com/bezhanSalleh/filament-shield/tree/2.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bezhanSalleh",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-03T17:02:35+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -962,6 +1051,118 @@
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
+            "name": "elsayed85/filament-quick-create",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elsayed85/filament-quick-create.git",
+                "reference": "e77b8cd99d3223ac5ec7dba9993f3ce2035b6d21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elsayed85/filament-quick-create/zipball/e77b8cd99d3223ac5ec7dba9993f3ce2035b6d21",
+                "reference": "e77b8cd99d3223ac5ec7dba9993f3ce2035b6d21",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FilamentQuickCreate\\FilamentQuickCreateServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FilamentQuickCreate\\": "src/",
+                    "FilamentQuickCreate\\Database\\Seeders\\": "database/seeders/",
+                    "FilamentQuickCreate\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Weston",
+                    "email": "awcodes1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Plugin for Filament Admin that adds a dropdown menu to the header to quickly create new items.",
+            "keywords": [
+                "filament",
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/elsayed85/filament-quick-create/tree/v1.0"
+            },
+            "time": "2022-08-09T22:58:58+00:00"
+        },
+        {
+            "name": "elsayed85/filament-sticky-header",
+            "version": "v2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elsayed85/filament-sticky-header.git",
+                "reference": "4324dd7ad6079e29f1b6a55c1c3fb9facbe04598"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elsayed85/filament-sticky-header/zipball/4324dd7ad6079e29f1b6a55c1c3fb9facbe04598",
+                "reference": "4324dd7ad6079e29f1b6a55c1c3fb9facbe04598",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "type": "project",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FilamentStickyHeader\\FilamentStickyHeaderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FilamentStickyHeader\\": "src/",
+                    "FilamentStickyHeader\\Database\\Seeders\\": "database/seeders/",
+                    "FilamentStickyHeader\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Weston",
+                    "email": "awcodes1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Filament Admin plugin to make headers sticky when scrolling.",
+            "keywords": [
+                "filament",
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/elsayed85/filament-sticky-header/tree/v2.2"
+            },
+            "time": "2022-08-07T21:41:51+00:00"
+        },
+        {
             "name": "evenement/evenement",
             "version": "v3.0.1",
             "source": {
@@ -1343,6 +1544,43 @@
                 "source": "https://github.com/filamentphp/filament"
             },
             "time": "2022-07-26T14:00:46+00:00"
+        },
+        {
+            "name": "filament/spatie-laravel-media-library-plugin",
+            "version": "v2.15.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filamentphp/spatie-laravel-media-library-plugin.git",
+                "reference": "431ac3f6f09eddad7b4dc3bac144705712ab62ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filamentphp/spatie-laravel-media-library-plugin/zipball/431ac3f6f09eddad7b4dc3bac144705712ab62ef",
+                "reference": "431ac3f6f09eddad7b4dc3bac144705712ab62ef",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.6|^9.0",
+                "php": "^8.0",
+                "spatie/laravel-medialibrary": "^9.0|^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Filament\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Filament support for `spatie/laravel-medialibrary`.",
+            "homepage": "https://github.com/filamentphp/filament",
+            "support": {
+                "issues": "https://github.com/filamentphp/filament/issues",
+                "source": "https://github.com/filamentphp/filament"
+            },
+            "time": "2022-08-01T21:24:56+00:00"
         },
         {
             "name": "filament/spatie-laravel-tags-plugin",
@@ -2334,6 +2572,62 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2022-07-26T13:30:00+00:00"
+        },
+        {
+            "name": "laravel/helpers",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/helpers.git",
+                "reference": "c28b0ccd799d58564c41a62395ac9511a1e72931"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/helpers/zipball/c28b0ccd799d58564c41a62395ac9511a1e72931",
+                "reference": "c28b0ccd799d58564c41a62395ac9511a1e72931",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.1.3|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "email": "dries@laravel.com"
+                }
+            ],
+            "description": "Provides backwards compatibility for helpers in the latest Laravel release.",
+            "keywords": [
+                "helpers",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/helpers/tree/v1.5.0"
+            },
+            "time": "2022-01-12T15:58:51+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -4155,73 +4449,6 @@
             "time": "2022-06-16T00:30:25+00:00"
         },
         {
-            "name": "phpsa/filament-feed",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpsa/filament-feed.git",
-                "reference": "71c9b2c3f7be9d683c67e61ad7275745998bfd1a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpsa/filament-feed/zipball/71c9b2c3f7be9d683c67e61ad7275745998bfd1a",
-                "reference": "71c9b2c3f7be9d683c67e61ad7275745998bfd1a",
-                "shasum": ""
-            },
-            "require": {
-                "filament/filament": "^2.9",
-                "php": "^8.0",
-                "simplepie/simplepie": "^1.5",
-                "spatie/laravel-package-tools": "^1.10"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Phpsa\\FilamentFeed\\FilamentFeedProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Phpsa\\FilamentFeed\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Craig G Smith",
-                    "email": "vxdhost@gmail.com"
-                }
-            ],
-            "description": "Display news on your Dashboard.",
-            "homepage": "https://cgs4k.nz",
-            "keywords": [
-                "cli",
-                "filament",
-                "fun",
-                "laravel",
-                "resource",
-                "ui",
-                "user",
-                "widget"
-            ],
-            "support": {
-                "issues": "https://github.com/phpsa/filament-feed/issues",
-                "source": "https://github.com/phpsa/filament-feed/tree/v1.0.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/phpsa",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-04-21T00:03:49+00:00"
-        },
-        {
             "name": "psr/container",
             "version": "1.1.2",
             "source": {
@@ -5855,78 +6082,82 @@
             "time": "2018-05-29T20:21:04+00:00"
         },
         {
-            "name": "simplepie/simplepie",
-            "version": "1.6.0",
+            "name": "saade/filament-fullcalendar",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/simplepie/simplepie.git",
-                "reference": "2bdbc51ed1010941c9c5f2cddca433e79665bfe1"
+                "url": "https://github.com/saade/filament-fullcalendar.git",
+                "reference": "0a6b31ad5704a6a22b387ef68080a438da4eae80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplepie/simplepie/zipball/2bdbc51ed1010941c9c5f2cddca433e79665bfe1",
-                "reference": "2bdbc51ed1010941c9c5f2cddca433e79665bfe1",
+                "url": "https://api.github.com/repos/saade/filament-fullcalendar/zipball/0a6b31ad5704a6a22b387ef68080a438da4eae80",
+                "reference": "0a6b31ad5704a6a22b387ef68080a438da4eae80",
                 "shasum": ""
             },
             "require": {
-                "ext-pcre": "*",
-                "ext-xml": "*",
-                "ext-xmlreader": "*",
-                "php": ">=5.6.0"
+                "filament/filament": "^2.0",
+                "illuminate/contracts": "^8.73|^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.11"
             },
             "require-dev": {
-                "yoast/phpunit-polyfills": "^1.0.1"
-            },
-            "suggest": {
-                "ext-curl": "",
-                "ext-iconv": "",
-                "ext-intl": "",
-                "ext-mbstring": "",
-                "mf2/mf2": "Microformat module that allows for parsing HTML for microformats"
+                "nunomaduro/collision": "^5.10|^6.0",
+                "nunomaduro/larastan": "^1.0|^2.0",
+                "orchestra/testbench": "^6.22|^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "spatie/laravel-ray": "^1.26"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Saade\\FilamentFullCalendar\\FilamentFullCalendarServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentFullCalendar": "Saade\\FilamentFullCalendar\\Facades\\FilamentFullCalendar"
+                    }
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "SimplePie": "library"
-                },
                 "psr-4": {
-                    "SimplePie\\": "src"
+                    "Saade\\FilamentFullCalendar\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Ryan Parman",
-                    "homepage": "http://ryanparman.com/",
-                    "role": "Creator, alumnus developer"
-                },
-                {
-                    "name": "Sam Sneddon",
-                    "homepage": "https://gsnedders.com/",
-                    "role": "Alumnus developer"
-                },
-                {
-                    "name": "Ryan McCue",
-                    "email": "me@ryanmccue.info",
-                    "homepage": "http://ryanmccue.info/",
+                    "name": "Saade",
+                    "email": "saade@outlook.com.br",
                     "role": "Developer"
                 }
             ],
-            "description": "A simple Atom/RSS parsing library for PHP",
-            "homepage": "http://simplepie.org/",
+            "description": "The Most Popular JavaScript Calendar integrated with Filament 💛",
+            "homepage": "https://github.com/saade/filament-fullcalendar",
             "keywords": [
-                "atom",
-                "feeds",
-                "rss"
+                "filament-fullcalendar",
+                "laravel",
+                "saade"
             ],
             "support": {
-                "issues": "https://github.com/simplepie/simplepie/issues",
-                "source": "https://github.com/simplepie/simplepie/tree/1.6.0"
+                "issues": "https://github.com/saade/filament-fullcalendar/issues",
+                "source": "https://github.com/saade/filament-fullcalendar/tree/v1.4.0"
             },
-            "time": "2022-04-21T11:05:19+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/saade",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-04T17:01:01+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",

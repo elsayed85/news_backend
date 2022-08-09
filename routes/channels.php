@@ -22,3 +22,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('App.Device.{device_id}', function ($device , $device_id) {
     return get_class($device) == Device::class && $device->id == $device_id;
 });
+
+
+Broadcast::channel('blog_posts' , function(){
+    return true;
+});
