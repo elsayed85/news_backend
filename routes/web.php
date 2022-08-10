@@ -7,6 +7,9 @@ use App\Http\Controllers\Blog\AuthorController;
 use App\Http\Controllers\Blog\PostsController;
 use App\Http\Controllers\BreakingNewsController;
 use App\Models\FilamentBlog\Post;
+use App\Models\User;
+use App\Models\Videos\Category;
+use App\Models\Videos\Video;
 use App\WebSocket\WebSocketHandler;
 use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
@@ -30,6 +33,31 @@ Route::impersonate();
 
 
 Route::get("test", function () {
+    $category2 = Category::create([
+        'name' => 'Test Category2',
+        'slug' => 'test-category2' . rand(0, 100),
+    ]);
+
+    $category1 = Category::create([
+        'name' => 'Test Category 1',
+        'slug' => 'test-category1' . rand(0, 100),
+    ]);
+
+    $user = User::factory()->create();
+    $video = Video::create([
+        'title' => 'Test Video',
+        'content' => 'Test Description',
+        'user_id' => $user->id,
+        'published_at' => now(),
+        'slug' => 'test-video' . rand(0, 100),
+    ]);
+
+    $video->categories()->sync([$category1->id, $category2->id]);
+
+    dd($video->categories);
+
+
+
     $post = Post::factory()->create();
     Notification::make()
     ->title('Saved successfully')

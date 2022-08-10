@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a48b43d3a60645c175715d22a8094230",
+    "content-hash": "5df5461f42e678545019ae2b5bc06b74",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1049,6 +1049,71 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "elsayed85/filament-password-reveal",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elsayed85/filament-password-reveal.git",
+                "reference": "bf6841ca6adf3a57da408aec90002ff585e37435"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elsayed85/filament-password-reveal/zipball/bf6841ca6adf3a57da408aec90002ff585e37435",
+                "reference": "bf6841ca6adf3a57da408aec90002ff585e37435",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.9",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Phpsa\\FilamentPasswordReveal\\FilamentPasswordRevealProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Phpsa\\FilamentPasswordReveal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Craig G Smith",
+                    "email": "vxdhost@gmail.com"
+                }
+            ],
+            "description": "Password Input with optino to show",
+            "homepage": "https://cgs4k.nz",
+            "keywords": [
+                "cli",
+                "filament",
+                "fun",
+                "laravel",
+                "resource",
+                "ui",
+                "user",
+                "widget"
+            ],
+            "support": {
+                "source": "https://github.com/elsayed85/filament-password-reveal/tree/v1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/phpsa",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-10T21:28:48+00:00"
         },
         {
             "name": "elsayed85/filament-quick-create",

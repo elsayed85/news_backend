@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Widgets\WelcomeWidget;
 use App\Http\Livewire\Filament\Auth\Login;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -141,7 +142,8 @@ return [
         'path' => app_path('Filament/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
-            Widgets\FilamentInfoWidget::class,
+            WelcomeWidget::class
+            // Widgets\FilamentInfoWidget::class,
         ],
     ],
 

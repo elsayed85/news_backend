@@ -2,32 +2,33 @@
 
 namespace App\Filament\Resources;
 
+use \Phpsa\FilamentAuthentication\Resources\UserResource as BaseUserResource;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\Components\BelongsToManyMultiSelect;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use \Phpsa\FilamentAuthentication\Resources\UserResource as BaseUserResource;
 use Filament\Resources\Table;
-use STS\FilamentImpersonate\Impersonate;
-use Filament\Facades\Filament;
-use Filament\Forms\Components\Card;
-use Illuminate\Support\Facades\Hash;
+use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\BelongsToManyMultiSelect;
 use Filament\Tables\Filters\TernaryFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Hash;
 use Phpsa\FilamentAuthentication\Actions\ImpersonateLink;
-use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\EditUser;
-use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ViewUser;
-use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ListUsers;
 use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\CreateUser;
+use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\EditUser;
+use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ListUsers;
+use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ViewUser;
+use Phpsa\FilamentPasswordReveal\Password;
+use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends BaseUserResource
 {
@@ -44,23 +45,31 @@ class UserResource extends BaseUserResource
                         TextInput::make('username')
                             ->required()
                             ->unique(table: User::class, ignorable: fn (?User $record): ?User => $record)
-                             ->label(strval(__('filament-authentication::filament-authentication.field.user.username'))),
-                        TextInput::make('password')
-                            ->same('passwordConfirmation')
-                            ->password()
-                            ->maxLength(255)
-                            ->required(fn($component, $get, $livewire, $model, $record, $set, $state) =>  $record === null)
-                            ->dehydrateStateUsing(fn ($state) => ! empty($state) ? Hash::make($state) : "")
-                             ->label(strval(__('filament-authentication::filament-authentication.field.user.password'))),
+                            ->label(strval(__('filament-authentication::filament-authentication.field.user.username'))),
+                        // Password::make('password')
+                        //     ->same('passwordConfirmation')
+                        //     ->password()
+                        //     ->maxLength(255)
+                        //     ->required(fn($component, $get, $livewire, $model, $record, $set, $state) =>  $record === null)
+                        //     ->dehydrateStateUsing(fn ($state) => ! empty($state) ? Hash::make($state) : "")
+                        //      ->label(strval(__('filament-authentication::filament-authentication.field.user.password'))),
+                        Password::make('password')
+                            ->autocomplete()
+                            ->revealable()
+                            ->copyable()
+                            ->generatable()
+                            ->passwordLength(8)
+                            ->passwordUsesNumbers()
+                            ->passwordUsesSymbols(),
                         TextInput::make('passwordConfirmation')
                             ->password()
                             ->dehydrated(false)
                             ->maxLength(255)
-                             ->label(strval(__('filament-authentication::filament-authentication.field.user.confirm_password'))),
+                            ->label(strval(__('filament-authentication::filament-authentication.field.user.confirm_password'))),
                         BelongsToManyMultiSelect::make('roles')
                             ->relationship('roles', 'name')
-                             ->preload(config('filament-authentication.preload_roles'))
-                             ->label(strval(__('filament-authentication::filament-authentication.field.user.roles')))
+                            ->preload(config('filament-authentication.preload_roles'))
+                            ->label(strval(__('filament-authentication::filament-authentication.field.user.roles')))
                     ])->columns(2),
             ]);
     }
@@ -112,5 +121,4 @@ class UserResource extends BaseUserResource
                 ImpersonateLink::make()
             ]);
     }
-
 }
