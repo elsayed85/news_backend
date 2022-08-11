@@ -12,12 +12,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
 use Stephenjude\FilamentBlog\Models\Category;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Post extends Model implements HasMedia
+class Post extends Model implements HasMedia , Viewable
 {
     use HasFactory;
     use HasTags;
-    use InteractsWithMedia;
+    use InteractsWithMedia , InteractsWithViews;
 
     /**
      * @var string

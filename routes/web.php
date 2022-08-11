@@ -6,6 +6,7 @@ use App\Events\Blog\Post\PostPublished;
 use App\Http\Controllers\Blog\AuthorController;
 use App\Http\Controllers\Blog\PostsController;
 use App\Http\Controllers\BreakingNewsController;
+use App\Http\Controllers\Site\VideosController;
 use App\Models\FilamentBlog\Post;
 use App\Models\User;
 use App\Models\Videos\Category;
@@ -26,6 +27,9 @@ Route::get("blog/author/{category:slug}/posts/{author}", [AuthorController::clas
 Route::get("blog/author/{author}/posts", [AuthorController::class, 'showPosts'])->name('blog.author.posts');
 Route::get("blog/author/{author}/posts-search", [AuthorController::class, 'searchInPosts'])->name('blog.author.search_posts');
 
+
+Route::get("videos/{video:slug}", [VideosController::class, "show"])->name('videos.show');
+
 Route::get("blog/post/{post}", [PostsController::class, 'show'])->name('blog.post.show');
 
 
@@ -33,6 +37,7 @@ Route::impersonate();
 
 
 Route::get("test", function () {
+    return phpinfo();
     $category2 = Category::create([
         'name' => 'Test Category2',
         'slug' => 'test-category2' . rand(0, 100),
@@ -60,15 +65,15 @@ Route::get("test", function () {
 
     $post = Post::factory()->create();
     Notification::make()
-    ->title('Saved successfully')
-    ->success()
-    ->body('Changes to the **post** have been saved.')
-    ->actions([
-        Action::make('عرض')
-            ->button()
-            ->url(route('blog.post.show', ['post' => $post->slug])),
-    ])
-    ->send();
+        ->title('Saved successfully')
+        ->success()
+        ->body('Changes to the **post** have been saved.')
+        ->actions([
+            Action::make('عرض')
+                ->button()
+                ->url(route('blog.post.show', ['post' => $post->slug])),
+        ])
+        ->send();
 });
 
-Route::get("posts", [BreakingNewsController::class , "getRecentPosts"])->name('breakingnews.get_posts');
+Route::get("posts", [BreakingNewsController::class, "getRecentPosts"])->name('breakingnews.get_posts');

@@ -12,6 +12,7 @@
         "ext-json": "*",
         "beyondcode/laravel-websockets": "^1.11",
         "bezhansalleh/filament-shield": "^2.1",
+        "cyrildewit/eloquent-viewable": "^6.1",
         "elsayed85/filament-password-reveal": "^1.2",
         "elsayed85/filament-quick-create": "^1.0",
         "elsayed85/filament-sticky-header": "^2.2",

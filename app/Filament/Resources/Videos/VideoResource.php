@@ -6,16 +6,17 @@ use App\Filament\Resources\Videos\VideoResource\Pages;
 use App\Filament\Resources\Videos\VideoResource\RelationManagers;
 use App\Models\Videos\Video;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use function now;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Filament\Forms\Components\SpatieTagsInput;
 use Stephenjude\FilamentBlog\Traits\HasContentEditor;
-use function now;
 
 
 class VideoResource extends Resource
@@ -63,7 +64,13 @@ class VideoResource extends Resource
                             ->image()
                             ->maxSize(5120)
                             ->imageCropAspectRatio('16:9')
-                            ->directory('videos')
+                            ->directory('videos_thumb')
+                            ->columnSpan([
+                                'sm' => 2,
+                            ]),
+
+                        SpatieMediaLibraryFileUpload::make('Videos')
+                            ->multiple()
                             ->columnSpan([
                                 'sm' => 2,
                             ]),
@@ -123,7 +130,7 @@ class VideoResource extends Resource
                 Tables\Filters\Filter::make('published_at')
                     ->form([
                         Forms\Components\DatePicker::make('published_from')
-                            ->placeholder(fn ($state): string => 'Dec 18, '.now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'Dec 18, ' . now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('published_until')
                             ->placeholder(fn ($state): string => now()->format('M d, Y')),
                     ])

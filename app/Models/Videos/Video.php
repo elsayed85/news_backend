@@ -7,14 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Video extends Model
+class Video extends Model implements HasMedia,Viewable
 {
     use HasFactory;
     use SoftDeletes;
     use HasTags;
+    use InteractsWithMedia,InteractsWithViews;
 
     protected $guarded = [];
+
+    protected $dates = ['deleted_at' , 'published_at'];
 
     public function categories()
     {
@@ -33,6 +40,11 @@ class Video extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class , 'user_id');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('videos');
     }
 }
