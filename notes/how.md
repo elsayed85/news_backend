@@ -21,3 +21,4 @@ https://github.com/saade/filament-fullcalendar
 pamf
 php artisan shield:install
 pa db:seed
+pa translation:sync-missing-translation-keys

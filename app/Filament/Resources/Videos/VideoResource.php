@@ -32,7 +32,7 @@ class VideoResource extends Resource
 
     protected static ?string $navigationGroup = 'Videos';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-video-camera';
 
     protected static ?int $navigationSort = 1;
 

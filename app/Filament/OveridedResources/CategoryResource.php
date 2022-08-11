@@ -2,28 +2,29 @@
 
 namespace App\Filament\OveridedResources;
 
-use App\Models\FilamentBlog\Author;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Stephenjude\FilamentBlog\Resources\AuthorResource\Pages;
+use Illuminate\Support\Str;
+use Stephenjude\FilamentBlog\Models\Category;
+use Stephenjude\FilamentBlog\Resources\CategoryResource\Pages;
 use Stephenjude\FilamentBlog\Traits\HasContentEditor;
 
-class AuthorResource extends Resource
+class CategoryResource extends Resource
 {
     use HasContentEditor;
 
-    protected static ?string $model = Author::class;
+    protected static ?string $model = Category::class;
 
-    protected static ?string $slug = 'blog/authors';
+    protected static ?string $slug = 'blog/categories';
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 1;
 
     protected static function getNavigationGroup(): ?string
     {
@@ -32,7 +33,7 @@ class AuthorResource extends Resource
 
     protected static function getNavigationLabel(): string
     {
-        return __('blog.author.title');
+        return __('blog.category.title');
     }
 
     public static function form(Form $form): Form
@@ -42,19 +43,17 @@ class AuthorResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->required(),
-                        Forms\Components\TextInput::make('username')
                             ->required()
-                            ->unique(Author::class, 'username', fn ($record) => $record),
-                        Forms\Components\FileUpload::make('photo')
-                            ->image()
-                            ->maxSize(5120)
-                            ->directory('blog')
-                            ->disk('public')
-                            ->columnSpan([
-                                'sm' => 2,
-                            ]),
-                        self::getContentEditor('bio'),
+                            ->reactive()
+                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
+                        Forms\Components\TextInput::make('slug')
+                            ->disabled()
+                            ->required()
+                            ->unique(Category::class, 'slug', fn ($record) => $record),
+                        self::getContentEditor('description'),
+                        Forms\Components\Toggle::make('is_visible')
+                            ->label('Visible to guests.')
+                            ->default(true),
                     ])
                     ->columns([
                         'sm' => 2,
@@ -64,14 +63,10 @@ class AuthorResource extends Resource
                     ->schema([
                         Forms\Components\Placeholder::make('created_at')
                             ->label('Created at')
-                            ->content(fn (
-                                ?Author $record
-                            ): string => $record ? $record->created_at->diffForHumans() : '-'),
+                            ->content(fn (?Category $record): string => $record ? $record->created_at->diffForHumans() : '-'),
                         Forms\Components\Placeholder::make('updated_at')
                             ->label('Last modified at')
-                            ->content(fn (
-                                ?Author $record
-                            ): string => $record ? $record->updated_at->diffForHumans() : '-'),
+                            ->content(fn (?Category $record): string => $record ? $record->updated_at->diffForHumans() : '-'),
                     ])
                     ->columnSpan(1),
             ])
@@ -82,14 +77,17 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('photo')
-                    ->rounded(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('username')
+                Tables\Columns\TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\BooleanColumn::make('is_visible')
+                    ->label('Visibility'),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Last Updated')
+                    ->date(),
             ])
             ->filters([
                 //
@@ -106,9 +104,9 @@ class AuthorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAuthors::route('/'),
-            'create' => Pages\CreateAuthor::route('/create'),
-            'edit' => Pages\EditAuthor::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }

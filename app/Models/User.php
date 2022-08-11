@@ -59,7 +59,7 @@ class User extends Authenticatable
     public function canImpersonate()
     {
         // For example
-        return true;
+        return auth()->user()->hasRole('super_admin');
     }
 
     /**
@@ -68,6 +68,6 @@ class User extends Authenticatable
     public function canBeImpersonated()
     {
         // For example
-        return true;
+        return auth()->user()->hasAnyRole(['normal_user']);
     }
 }

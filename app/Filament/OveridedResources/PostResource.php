@@ -31,11 +31,20 @@ class PostResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    protected static ?string $navigationGroup = 'Blog';
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?int $navigationSort = 0;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('blog.title');
+    }
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('blog.posts.title');
+    }
 
     public static function form(Form $form): Form
     {
