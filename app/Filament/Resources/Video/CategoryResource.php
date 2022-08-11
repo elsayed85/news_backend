@@ -26,11 +26,19 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'Videos';
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?int $navigationSort = 2;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('videos.title');
+    }
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('videos.category.title');
+    }
 
     public static function form(Form $form): Form
     {

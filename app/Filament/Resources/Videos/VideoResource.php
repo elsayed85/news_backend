@@ -30,11 +30,19 @@ class VideoResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    protected static ?string $navigationGroup = 'Videos';
-
     protected static ?string $navigationIcon = 'heroicon-o-video-camera';
 
     protected static ?int $navigationSort = 1;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('videos.title');
+    }
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('videos.videos.title');
+    }
 
     public static function form(Form $form): Form
     {

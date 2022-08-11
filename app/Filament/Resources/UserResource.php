@@ -32,7 +32,6 @@ use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends BaseUserResource
 {
-
     public static function form(Form $form): Form
     {
         return $form

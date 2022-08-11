@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
                 NavigationItem::make(trans('languages.title'))
                     ->url(url(config('translation.ui_url')), shouldOpenInNewTab: true)
                     ->icon('heroicon-o-translate')
-                    ->group('Reports')
+                    ->group(__('languages.title'))
                     ->sort(3),
             ]);
         });

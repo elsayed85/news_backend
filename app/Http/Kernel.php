@@ -4,6 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\APIVersion;
 use App\Http\Middleware\EnforceJson;
+use App\Http\Middleware\FilamentAdminMiddleware;
+use Filament\Http\Middleware\Authenticate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
