@@ -158,7 +158,7 @@
             });
         }
         init_breakingNews();
-        window.Echo.channel('blog_posts')
+        Echo.channel('blog_posts')
             .listen('.new_post_published', (e) => {
                 console.log(e);
                 init_breakingNews();
