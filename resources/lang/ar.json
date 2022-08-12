@@ -1,5 +1,5 @@
 {
-    "filament::resources\/pages\/edit-record.messages.saved": "",
+    "filament::resources\/pages\/edit-record.messages.saved": "تم الحفظ",
     "Create API Token": "",
     "API tokens allow third-party services to authenticate with our application on your behalf.": "",
     "Token Name": "",
@@ -18,8 +18,8 @@
     "Save": "",
     "Delete API Token": "",
     "Are you sure you would like to delete this API token?": "",
-    "filament::resources\/pages\/edit-record.form.actions.save.label": "",
-    "filament::resources\/pages\/edit-record.form.actions.cancel.label": "",
+    "filament::resources\/pages\/edit-record.form.actions.save.label": "حفظ",
+    "filament::resources\/pages\/edit-record.form.actions.cancel.label": "إلغاء",
     "Copied to clipboard": "",
     "filament::widgets\/account-widget.welcome": "مرحبا بك يا :user",
     "filament::widgets\/account-widget.buttons.logout.label": "تسجيل الخروج",

@@ -168,3 +168,7 @@ a.menu {
 .history-lst .nav-tabs {
     float: right;
 }
+
+.vidz_row .video_info h3 {
+    font-size: 18px;
+  }

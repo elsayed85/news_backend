@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
         {{ config('app.name') }} - @yield('title')
     </title>
@@ -129,7 +130,7 @@
     <!--wrapper end-->
 
     @yield('before_js')
-    <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('main/js/jquery.min.js') }}"></script>
     <script src="{{ asset('main/js/popper.js') }}"></script>
     <script src="{{ asset('main/js/bootstrap.min.js') }}"></script>
@@ -157,8 +158,9 @@
             });
         }
         init_breakingNews();
-        Echo.channel('blog_posts')
+        window.Echo.channel('blog_posts')
             .listen('.new_post_published', (e) => {
+                console.log(e);
                 init_breakingNews();
             });
     </script>

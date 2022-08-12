@@ -22,3 +22,7 @@ pamf
 php artisan shield:install
 pa db:seed
 pa translation:sync-missing-translation-keys
+
+
+
+fix clicking on playlist video rendering

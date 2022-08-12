@@ -12,16 +12,35 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Video extends Model implements HasMedia,Viewable
+class Video extends Model implements HasMedia, Viewable
 {
     use HasFactory;
     use SoftDeletes;
     use HasTags;
-    use InteractsWithMedia,InteractsWithViews;
+    use InteractsWithMedia, InteractsWithViews;
 
     protected $guarded = [];
 
-    protected $dates = ['deleted_at' , 'published_at'];
+    protected $dates = ['deleted_at', 'published_at'];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            $query->user_id = auth()->id();
+        });
+
+        static::updating(function ($query) {
+            $query->user_id = auth()->id();
+        });
+    }
 
     public function categories()
     {
@@ -40,7 +59,7 @@ class Video extends Model implements HasMedia,Viewable
 
     public function author()
     {
-        return $this->belongsTo(User::class , 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function registerMediaCollections(): void

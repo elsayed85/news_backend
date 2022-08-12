@@ -14,6 +14,7 @@ class VideosController extends Controller
             'author',
             'categories',
             'tags',
+            'media',
         ]);
 
         views($video)

@@ -34,7 +34,7 @@
         "livewire/livewire": "^2.0",
         "martin-ro/filament-charcount-field": "^0.1.5",
         "phpsa/filament-authentication": "^2.1",
-        "pusher/pusher-php-server": "~7.0",
+        "pusher/pusher-php-server": "^7.0",
         "pxlrbt/filament-spotlight": "^0.3.2",
         "saade/filament-fullcalendar": "^1.4",
         "spatie/laravel-medialibrary": "^9.0.0",

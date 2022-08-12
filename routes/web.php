@@ -11,10 +11,12 @@ use App\Models\FilamentBlog\Post;
 use App\Models\User;
 use App\Models\Videos\Category;
 use App\Models\Videos\Video;
+use App\Services\VideoStream;
 use App\WebSocket\WebSocketHandler;
 use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Route;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\Process\Process;
 
 Route::get('/', function () {
@@ -37,7 +39,8 @@ Route::impersonate();
 
 
 Route::get("test", function () {
-    return phpinfo();
+    $post = Post::factory()->create();
+    dd($post->author);
     $category2 = Category::create([
         'name' => 'Test Category2',
         'slug' => 'test-category2' . rand(0, 100),
@@ -77,3 +80,17 @@ Route::get("test", function () {
 });
 
 Route::get("posts", [BreakingNewsController::class, "getRecentPosts"])->name('breakingnews.get_posts');
+
+Route::get('video/{video}', function ($video_id) {
+    $video= Media::find($video_id);
+    // Pasta dos videos.
+    $video_path = $video->getPath();
+
+    $stream = new VideoStream($video_path);
+    return response()->stream(function () use ($stream) {
+        $stream->start();
+    });
+
+    return response("File doesn't exists", 404);
+})->name('video.source');
+
