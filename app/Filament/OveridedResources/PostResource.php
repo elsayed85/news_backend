@@ -103,8 +103,7 @@ class PostResource extends Resource
 
                         DateTimePicker::make('published_at')
                             ->label('Published Date'),
-                        SpatieTagsInput::make('tags')
-                            ->required(),
+                        SpatieTagsInput::make('tags'),
                     ])
                     ->columns([
                         'sm' => 2,

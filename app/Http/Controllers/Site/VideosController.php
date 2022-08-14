@@ -17,10 +17,6 @@ class VideosController extends Controller
             'media',
         ]);
 
-        views($video)
-            ->cooldown(1)
-            ->record();
-
         return view('videos.show', [
             'video' => $video,
         ]);

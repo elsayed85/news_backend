@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use App\Models\User;
+use App\Models\Videos\Video;
 use App\Policies\AuthorPolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\PermissionPolicy;
 use App\Policies\PostPolicy;
 use App\Policies\RolePolicy;
 use App\Policies\UserPolicy;
+use App\Policies\Videos\VideoPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
@@ -32,6 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         Permission::class => PermissionPolicy::class,
         Category::class => CategoryPolicy::class,
         User::class => UserPolicy::class,
+        Video::class => VideoPolicy::class,
     ];
 
     /**

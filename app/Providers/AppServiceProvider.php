@@ -11,6 +11,7 @@ use Filament\Http\Livewire\Auth\Login;
 use Filament\Navigation\NavigationItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -41,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         Factory::guessFactoryNamesUsing(function (string $model_name) {
             $namespace = 'Database\\Factories\\';
             $model_name = Str::afterLast($model_name, '\\');

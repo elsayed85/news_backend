@@ -6,68 +6,52 @@
                       <a href="#" title="" class="menu">
                           <i class="icon-menu"></i>
                       </a>
-                      <a href="index.html" title="" class="logo">
+                      <a href="{{ route('home') }}" title="" class="logo">
                           <img src="{{ asset('main/images/logo.png') }}" alt="">
                       </a>
                   </div>
                   <!--menu_logo end-->
-                  <div class="search_form">
-                      <form>
-                          <input type="text" name="search" placeholder="اكتب هنا واضغط Enter">
-                          <button type="submit">
-                              <i class="icon-search"></i>
-                          </button>
-                      </form>
-                  </div>
+                  @livewire('site.videos-search-bar')
+
                   <!--search_form end-->
                   <ul class="controls-lv">
-                      <li>
-                          <a href="#" title=""><i class="icon-message"></i></a>
-                      </li>
-                      <li>
-                          <a href="#" title=""><i class="icon-notification"></i></a>
-                      </li>
-                      <li class="user-log">
-                          <div class="user-ac-img">
-                              <img src="{{ asset('main/images/resources/user-img.png') }}" alt="">
-                          </div>
-                          <div class="account-menu">
-                              @auth
-                                  <h4>
-                                      {{ auth()->user()->name }}
-                                      <span class="usr-status">العقيد</span>
-                                  </h4>
+                      @auth
+                          <li class="user-log">
+                              <div class="user-ac-img">
+                                  {{ auth()->user()->name }}
+                              </div>
+                              <div class="account-menu">
                                   <div class="sd_menu">
                                       <ul class="mm_menu">
                                           <li>
                                               <span>
-                                                  <i class="icon-user"></i>
-                                              </span>
-                                              <a href="#" title="">قناتي</a>
-                                          </li>
-                                          <li>
-                                              <span>
                                                   <i class="icon-settings"></i>
                                               </span>
-                                              <a href="#" title="">الاعدادات</a>
+                                              <a href="{{ route('filament.pages.profile') }}">الاعدادات</a>
                                           </li>
                                           <li>
                                               <span>
                                                   <i class="icon-logout"></i>
                                               </span>
-                                              <a href="#" title="">تسجيل الخروج</a>
+                                              <a href="#"
+                                                  onclick="event.preventDefault(); document.getElementById('filament_logout').submit();">تسجيل
+                                                  الخروج</a>
                                           </li>
                                       </ul>
                                   </div>
-                              @endauth
+                              </div>
+                          </li>
+                      @endauth
 
-                              @guest
+                      @guest
+                          <li>
+                              <a href="{{ route('filament.auth.login') }}">تسجيل الدخول</a>
+                          </li>
+                      @endguest
 
-                              @endguest
-                          </div>
-                      </li>
                       <li>
-                          <a href="Upload_Video.html" title="" class="btn-default">ارفع فيديو</a>
+                          <a href="{{ route('filament.resources.videos/videos.create') }}" class="btn-default">ارفع
+                              فيديو</a>
                       </li>
                   </ul>
                   <!--controls-lv end-->

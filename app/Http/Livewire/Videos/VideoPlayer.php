@@ -15,7 +15,7 @@ class VideoPlayer extends Component
     {
         $this->video = $video;
         $this->video_items = $video->getMedia();
-        $this->active_video = $this->video_items[0];
+        $this->active_video = $this->video_items[0] ?? null;
     }
 
     public function render()

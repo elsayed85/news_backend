@@ -430,7 +430,7 @@
         }, 'slow');
 
     </script>
-    <x-impersonate::banner/>
+    <x-impersonate::banner style='light' />
 </body>
 
 </html>

@@ -2,7 +2,9 @@
 
 namespace App\Policies\Videos;
 
+use App\Models\FilamentBlog\Post;
 use App\Models\User;
+use App\Models\Videos\Video;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class VideoPolicy
@@ -48,9 +50,9 @@ class VideoPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user)
+    public function update(User $user , Video $video)
     {
-        return $user->can('update_videos::video');
+        return $user->can('update_videos::video') && $video->author()->is($user);
     }
 
     /**
@@ -59,9 +61,9 @@ class VideoPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user)
+    public function delete(User $user , Video $video)
     {
-        return $user->can('delete_videos::video');
+        return $user->can('delete_videos::video') && $video->author()->is($user);
     }
 
     /**
@@ -81,9 +83,9 @@ class VideoPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user)
+    public function forceDelete(User $user , Video $video)
     {
-        return $user->can('force_delete_videos::video');
+        return $user->can('force_delete_videos::video')  && $video->author()->is($user);
     }
 
     /**
@@ -103,9 +105,9 @@ class VideoPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user)
+    public function restore(User $user , Video $video)
     {
-        return $user->can('restore_videos::video');
+        return $user->can('restore_videos::video') && $video->author()->is($user);
     }
 
     /**

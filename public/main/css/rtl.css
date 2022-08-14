@@ -9,6 +9,7 @@ a {
 
 .controls-lv {
     float: left;
+    padding: 14px;
 }
 
 .search_form {
@@ -141,11 +142,11 @@ a.menu {
 }
 
 .info-pr-sec .search_form {
-    float: left!important;
+    float: left !important;
 }
 
 .decp_cotnet {
-    max-width: none!important;
+    max-width: none !important;
 }
 
 
@@ -171,4 +172,36 @@ a.menu {
 
 .vidz_row .video_info h3 {
     font-size: 18px;
-  }
+}
+
+.pagination-nav {
+    float: right !important;
+}
+
+.avatar_name {
+    color: #000;
+    font-size: 24px;
+}
+
+.circle_avatar {
+    background: #272626;
+    color: white;
+    width: 57px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 50%;
+    height: 54px;
+    font-size: 22px;
+}
+
+.videos_results {
+    background: #687880;
+    color: white;
+    padding: 11px;
+    margin-top: 11px;
+    position: absolute;
+    width: inherit;
+    border-radius: 18px;
+    font-size: 17px;
+    z-index: 99999;
+}

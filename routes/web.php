@@ -6,6 +6,7 @@ use App\Events\Blog\Post\PostPublished;
 use App\Http\Controllers\Blog\AuthorController;
 use App\Http\Controllers\Blog\PostsController;
 use App\Http\Controllers\BreakingNewsController;
+use App\Http\Controllers\Site\IndexController;
 use App\Http\Controllers\Site\VideosController;
 use App\Models\FilamentBlog\Post;
 use App\Models\User;
@@ -19,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\Process\Process;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class , "home"])->name('home');
+Route::get('top-watched-videos', [IndexController::class , "topWatchedVideos"])->name('top_watched_videos');
+Route::get('recent-videos', [IndexController::class , "recentVideos"])->name('recent_videos');
+Route::get('search-videos', [IndexController::class , "videosSearch"])->name('search_in_videos');
 
 Route::get("blog/author/{author}", [AuthorController::class, 'show'])->name('blog.author.profile');
 Route::get("blog/author/{category:slug}/posts/{author}", [AuthorController::class, 'showPostsInCategory'])

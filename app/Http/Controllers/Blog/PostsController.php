@@ -10,9 +10,6 @@ class PostsController extends Controller
 {
     public function show(Post $post)
     {
-        views($post)
-            ->cooldown(1)
-            ->record();
         dd($post);
     }
 }

@@ -28,6 +28,8 @@ use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\EditUser;
 use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ListUsers;
 use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ViewUser;
 use Phpsa\FilamentPasswordReveal\Password;
+use Saadj55\FilamentCopyable\Forms\Components\CopyableTextInput;
+use Saadj55\FilamentCopyable\Tables\Columns\CopyableTextColumn;
 use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends BaseUserResource
@@ -41,7 +43,7 @@ class UserResource extends BaseUserResource
                         TextInput::make('name')
                             ->label(strval(__('filament-authentication::filament-authentication.field.user.name')))
                             ->required(),
-                        TextInput::make('username')
+                        CopyableTextInput::make('username')
                             ->required()
                             ->unique(table: User::class, ignorable: fn (?User $record): ?User => $record)
                             ->label(strval(__('filament-authentication::filament-authentication.field.user.username'))),
@@ -83,7 +85,7 @@ class UserResource extends BaseUserResource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()->label(strval(__('filament-authentication::filament-authentication.field.user.name'))),
-                TextColumn::make('username')
+                CopyableTextColumn::make('username')
                     ->searchable()
                     ->sortable()->label(strval(__('filament-authentication::filament-authentication.field.user.username'))),
                 // IconColumn::make('email_verified_at')

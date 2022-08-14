@@ -3,21 +3,20 @@
 namespace App\Models\Videos;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Tags\HasTags;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use CyrildeWit\EloquentViewable\InteractsWithViews;
-use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use Spatie\Tags\HasTags;
 
-class Video extends Model implements HasMedia, Viewable
+class Video extends Model implements HasMedia
 {
     use HasFactory;
     use SoftDeletes;
     use HasTags;
-    use InteractsWithMedia, InteractsWithViews;
+    use InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -47,6 +46,11 @@ class Video extends Model implements HasMedia, Viewable
         return $this->belongsToMany(Category::class, 'video_categories', 'video_id', 'category_id');
     }
 
+    public function getThumb()
+    {
+        return $this->thumb ??  asset("main/images/resources/vide1.png");
+    }
+
     public function scopePublished(Builder $query)
     {
         return $query->whereNotNull('published_at')->whereNull('deleted_at');
@@ -55,6 +59,16 @@ class Video extends Model implements HasMedia, Viewable
     public function scopeDraft(Builder $query)
     {
         return $query->whereNull('published_at');
+    }
+
+    public function scopeRecent(Builder $query)
+    {
+        return $query->orderByDesc('created_at');
+    }
+
+    public function scopeTopWatched(Builder $query)
+    {
+        return $query->orderByDesc('views_count');
     }
 
     public function author()

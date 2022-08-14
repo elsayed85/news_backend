@@ -34,7 +34,7 @@
 
         <div class="side_menu">
             <div class="form_dvv">
-                <a href="#" title="" class="login_form_show">تسجيل الدخول</a>
+                <a href="{{ route('filament.auth.login') }}" title="" class="login_form_show">تسجيل الدخول</a>
             </div>
             <div class="sd_menu">
                 <ul class="mm_menu">
@@ -42,13 +42,13 @@
                         <span>
                             <i class="icon-home"></i>
                         </span>
-                        <a href="#" title="">الصفحة الرئيسيه</a>
+                        <a href="{{ route('home') }}" title="">الصفحة الرئيسيه</a>
                     </li>
                     <li>
                         <span>
                             <i class="icon-fire"></i>
                         </span>
-                        <a href="#" title="">الاكثر مشاهدة</a>
+                        <a href="{{ route('top_watched_videos') }}" title="">الاكثر مشاهدة</a>
                     </li>
                 </ul>
             </div>
@@ -76,33 +76,34 @@
                     </li>
                 </ul>
             </div>
+            @auth
             <div class="sd_menu">
                 <ul class="mm_menu">
                     <li>
                         <span>
                             <i class="icon-settings"></i>
                         </span>
-                        <a href="#" title="">الاعدادات</a>
+                        <a href="{{ route('filament.pages.profile') }}" title="">الاعدادات</a>
                     </li>
                     <li>
                         <span>
                             <i class="icon-logout"></i>
                         </span>
-                        <a href="#" title="">تسجيل الخروج</a>
+                        <a href="#"  onclick="event.preventDefault(); document.getElementById('filament_logout').submit();">تسجيل الخروج</a>
                     </li>
                 </ul>
             </div>
-            <!--sd_menu end-->
             <div class="sd_menu m_linkz">
-                <span>العقيد / محمد عمر</span>
+                <span>{{ auth()->user()->name }}</span>
             </div>
+            @endauth
             <div class="dd_menu"></div>
         </div>
         <!--side_menu end-->
 
         @yield('main_content')
 
-        @include('partials.index.footer_logo')
+        {{-- @include('partials.index.footer_logo') --}}
 
         <section class="demo-section-box">
             <div class="section-container">
@@ -128,6 +129,10 @@
         </section>
     </div>
     <!--wrapper end-->
+
+    <form method="post" action="{{ route('filament.auth.logout') }}" id="filament_logout">
+    {{ csrf_field() }}
+    </form>
 
     @yield('before_js')
     <script src="{{ asset('js/app.js') }}"></script>

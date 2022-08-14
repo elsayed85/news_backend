@@ -9,7 +9,6 @@ use Filament\Notifications\Notification;
 
 class PostObserver
 {
-
     public function creating(Post $post)
     {
         if($post->isPublished()) {

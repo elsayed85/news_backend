@@ -52,9 +52,9 @@
         @class([
             'block flex-shrink-0 w-10 h-10 rounded-full bg-gray-200 bg-cover bg-center',
             'dark:bg-gray-900' => config('filament.dark_mode'),
+            'avatar_name'
         ])
-        style="background-image: url('{{ \Filament\Facades\Filament::getUserAvatarUrl($user) }}')"
-    ></button>
+    >{{ $user->name[0] }}</button>
 
     <div
         x-ref="panel"

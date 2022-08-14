@@ -2,6 +2,7 @@
 
 namespace App\Models\FilamentBlog;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,14 +13,31 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
 use Stephenjude\FilamentBlog\Models\Category;
-use CyrildeWit\EloquentViewable\InteractsWithViews;
-use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Post extends Model implements HasMedia , Viewable
+class Post extends Model implements HasMedia
 {
     use HasFactory;
     use HasTags;
-    use InteractsWithMedia , InteractsWithViews;
+    use InteractsWithMedia;
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            $query->user_id = auth()->id();
+        });
+
+        static::updating(function ($query) {
+            $query->user_id = auth()->id();
+        });
+    }
 
     /**
      * @var string
@@ -66,6 +84,11 @@ class Post extends Model implements HasMedia , Viewable
     public function scopeDraft(Builder $query)
     {
         return $query->whereNull('published_at');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function author(): BelongsTo

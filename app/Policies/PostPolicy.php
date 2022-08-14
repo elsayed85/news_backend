@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\FilamentBlog\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -48,9 +49,9 @@ class PostPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user)
+    public function update(User $user ,  Post $post)
     {
-        return $user->can('update_post');
+        return $user->can('update_post') && $post->user()->is($user);
     }
 
     /**
@@ -59,9 +60,9 @@ class PostPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user)
+    public function delete(User $user , Post $post)
     {
-        return $user->can('delete_post');
+        return $user->can('delete_post') && $post->user()->is($user);
     }
 
     /**

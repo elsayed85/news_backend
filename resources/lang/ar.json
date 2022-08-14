@@ -24,5 +24,11 @@
     "filament::widgets\/account-widget.welcome": "مرحبا بك يا :user",
     "filament::widgets\/account-widget.buttons.logout.label": "تسجيل الخروج",
     "filament::widgets\/filament-info-widget.buttons.visit_documentation.label": "",
-    "filament::widgets\/filament-info-widget.buttons.visit_github.label": ""
+    "filament::widgets\/filament-info-widget.buttons.visit_github.label": "",
+    "Pagination Navigation": "",
+    "Showing": "",
+    "to": "",
+    "of": "",
+    "results": "",
+    "Go to page :page": ""
 }

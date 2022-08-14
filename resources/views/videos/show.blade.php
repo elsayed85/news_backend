@@ -27,7 +27,7 @@
 									</h3>
 									<div class="info-pr">
 										<span>
-										{{ views($video)->count() }} مشاهدة
+										123 مشاهدة
 										</span>
 										<div class="clearfix"></div>
 									</div>
