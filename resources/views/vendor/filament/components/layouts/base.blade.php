@@ -68,20 +68,13 @@
             </script>
         @endif
 
-        {{ \Filament\Facades\Filament::renderHook('head.end') }}
-    </head>
-
-    <body @class([
-        'bg-gray-100 text-gray-900 filament-body',
-        'dark:text-gray-100 dark:bg-gray-900' => config('filament.dark_mode'),
-    ])>
-        {{ \Filament\Facades\Filament::renderHook('body.start') }}
-
-        {{ $slot }}
-
-        {{ \Filament\Facades\Filament::renderHook('scripts.start') }}
+                {{ \Filament\Facades\Filament::renderHook('scripts.start') }}
 
         @livewireScripts
+        <script src="{{ mix('js/manifest.js') }}" defer></script>
+        <script src="{{ mix('js/filament-turbo.js') }}" defer></script>
+        {{-- <script src="{{ mix('js/tall-turbo.js') }}" defer></script> --}}
+
 
         <script>
             window.filamentData = @json(\Filament\Facades\Filament::getScriptData());
@@ -121,6 +114,17 @@
         @stack('scripts')
 
         {{ \Filament\Facades\Filament::renderHook('scripts.end') }}
+
+        {{ \Filament\Facades\Filament::renderHook('head.end') }}
+    </head>
+
+    <body @class([
+        'bg-gray-100 text-gray-900 filament-body',
+        'dark:text-gray-100 dark:bg-gray-900' => config('filament.dark_mode'),
+    ])>
+        {{ \Filament\Facades\Filament::renderHook('body.start') }}
+
+        {{ $slot }}
 
         {{ \Filament\Facades\Filament::renderHook('body.end') }}
     </body>

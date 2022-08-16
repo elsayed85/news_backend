@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea1738c548b8869a91cecd5b385d4c0a",
+    "content-hash": "25ebb11351876789b59b790f4ea1c419",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -6256,84 +6256,6 @@
                 "source": "https://github.com/ringcentral/psr7/tree/master"
             },
             "time": "2018-05-29T20:21:04+00:00"
-        },
-        {
-            "name": "saade/filament-fullcalendar",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/saade/filament-fullcalendar.git",
-                "reference": "0a6b31ad5704a6a22b387ef68080a438da4eae80"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/saade/filament-fullcalendar/zipball/0a6b31ad5704a6a22b387ef68080a438da4eae80",
-                "reference": "0a6b31ad5704a6a22b387ef68080a438da4eae80",
-                "shasum": ""
-            },
-            "require": {
-                "filament/filament": "^2.0",
-                "illuminate/contracts": "^8.73|^9.0",
-                "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.11"
-            },
-            "require-dev": {
-                "nunomaduro/collision": "^5.10|^6.0",
-                "nunomaduro/larastan": "^1.0|^2.0",
-                "orchestra/testbench": "^6.22|^7.0",
-                "pestphp/pest": "^1.21",
-                "pestphp/pest-plugin-laravel": "^1.1",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "spatie/laravel-ray": "^1.26"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Saade\\FilamentFullCalendar\\FilamentFullCalendarServiceProvider"
-                    ],
-                    "aliases": {
-                        "FilamentFullCalendar": "Saade\\FilamentFullCalendar\\Facades\\FilamentFullCalendar"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Saade\\FilamentFullCalendar\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Saade",
-                    "email": "saade@outlook.com.br",
-                    "role": "Developer"
-                }
-            ],
-            "description": "The Most Popular JavaScript Calendar integrated with Filament 💛",
-            "homepage": "https://github.com/saade/filament-fullcalendar",
-            "keywords": [
-                "filament-fullcalendar",
-                "laravel",
-                "saade"
-            ],
-            "support": {
-                "issues": "https://github.com/saade/filament-fullcalendar/issues",
-                "source": "https://github.com/saade/filament-fullcalendar/tree/v1.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/saade",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-08-04T17:01:01+00:00"
         },
         {
             "name": "saadj55/filament-copyable",
