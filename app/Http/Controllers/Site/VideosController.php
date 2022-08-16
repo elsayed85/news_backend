@@ -17,8 +17,16 @@ class VideosController extends Controller
             'media',
         ]);
 
+        $videos = $video->getMedia();
+        $total_videos_count = $videos->count();
+        $active_video = $videos[request('num', 1) - 1] ?? null;
+
         return view('videos.show', [
             'video' => $video,
+            'active_video' => $active_video,
+            'total_videos_count' => $total_videos_count,
+            'videos' => $videos,
+            'related_videos' => $video->getRelatedVideos(),
         ]);
     }
 }

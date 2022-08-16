@@ -79,6 +79,8 @@ class VideoResource extends Resource
 
                         SpatieMediaLibraryFileUpload::make('Videos')
                             ->multiple()
+                            ->minFiles(1)
+                            ->maxFiles(5)
                             ->columnSpan([
                                 'sm' => 2,
                             ]),

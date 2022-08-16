@@ -80,4 +80,8 @@ class Video extends Model implements HasMedia
     {
         $this->addMediaCollection('videos');
     }
+
+    public function getRelatedVideos(){
+        return Video::withAnyTags($this->tags)->get();
+    }
 }
