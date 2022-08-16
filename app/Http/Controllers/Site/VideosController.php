@@ -19,6 +19,13 @@ class VideosController extends Controller
 
         $videos = $video->getMedia();
         $total_videos_count = $videos->count();
+
+        if($total_videos_count < 1 && (auth()->check() && auth()->user()->hasRole('super_admin'))){
+            abort_if($total_videos_count < 1, 404 , "برجاء إضافة فيديو أولا من لوحة التحكم");
+        }
+
+        abort_if($total_videos_count < 1, 404);
+
         $active_video = $videos[request('num', 1) - 1] ?? null;
 
         return view('videos.show', [
