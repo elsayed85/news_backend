@@ -8,6 +8,7 @@ use App\Http\Controllers\Blog\PostsController;
 use App\Http\Controllers\BreakingNewsController;
 use App\Http\Controllers\Site\IndexController;
 use App\Http\Controllers\Site\VideosController;
+use App\Http\Controllers\TestController;
 use App\Models\FilamentBlog\Post;
 use App\Models\User;
 use App\Models\Videos\Category;
@@ -20,22 +21,41 @@ use Illuminate\Support\Facades\Route;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\Process\Process;
 
-Route::get('/', [IndexController::class , "home"])->name('home');
-Route::get('top-watched-videos', [IndexController::class , "topWatchedVideos"])->name('top_watched_videos');
-Route::get('recent-videos', [IndexController::class , "recentVideos"])->name('recent_videos');
-Route::get('search-videos', [IndexController::class , "videosSearch"])->name('search_in_videos');
+Route::get('/', [IndexController::class, "home"])->name('home');
 
-Route::get("blog/author/{author}", [AuthorController::class, 'show'])->name('blog.author.profile');
-Route::get("blog/author/{category:slug}/posts/{author}", [AuthorController::class, 'showPostsInCategory'])
-    ->name('blog.author.posts_in_category');
-Route::get("blog/author/{author}/posts", [AuthorController::class, 'showPosts'])->name('blog.author.posts');
-Route::get("blog/author/{author}/posts-search", [AuthorController::class, 'searchInPosts'])->name('blog.author.search_posts');
+Route::middleware(config('filament.middleware.auth'))->group(function () {
+    Route::get('top-watched-videos', [IndexController::class, "topWatchedVideos"])->name('top_watched_videos');
+    Route::get('recent-videos', [IndexController::class, "recentVideos"])->name('recent_videos');
+    Route::get('search-videos', [IndexController::class, "videosSearch"])->name('search_in_videos');
+
+    Route::get("blog/author/{author}", [AuthorController::class, 'show'])->name('blog.author.profile');
+    Route::get("blog/author/{category:slug}/posts/{author}", [AuthorController::class, 'showPostsInCategory'])
+        ->name('blog.author.posts_in_category');
+    Route::get("blog/author/{author}/posts", [AuthorController::class, 'showPosts'])->name('blog.author.posts');
+    Route::get("blog/author/{author}/posts-search", [AuthorController::class, 'searchInPosts'])->name('blog.author.search_posts');
+
+    Route::get("videos/{video:slug}", [VideosController::class, "show"])->name('videos.show');
+
+    Route::get("blog/post/{post}", [PostsController::class, 'show'])->name('blog.post.show');
+
+    Route::get("posts", [BreakingNewsController::class, "getRecentPosts"])->name('breakingnews.get_posts');
+
+    Route::get('video/{video}', function ($video_id) {
+        $video = Media::find($video_id);
+        // Pasta dos videos.
+        $video_path = $video->getPath();
+
+        $stream = new VideoStream($video_path);
+        return response()->stream(function () use ($stream) {
+            $stream->start();
+        });
+
+        return response("File doesn't exists", 404);
+    })->name('video.source');
+});
 
 
-Route::get("videos/{video:slug}", [VideosController::class, "show"])->name('videos.show');
-
-Route::get("blog/post/{post}", [PostsController::class, 'show'])->name('blog.post.show');
-
+Route::post('/setActiveStatus', [TestController::class, "setActiveStatus"])->name('activeStatus.set');
 
 Route::impersonate();
 
@@ -80,19 +100,3 @@ Route::get("test", function () {
         ])
         ->send();
 });
-
-Route::get("posts", [BreakingNewsController::class, "getRecentPosts"])->name('breakingnews.get_posts');
-
-Route::get('video/{video}', function ($video_id) {
-    $video= Media::find($video_id);
-    // Pasta dos videos.
-    $video_path = $video->getPath();
-
-    $stream = new VideoStream($video_path);
-    return response()->stream(function () use ($stream) {
-        $stream->start();
-    });
-
-    return response("File doesn't exists", 404);
-})->name('video.source');
-

@@ -4,6 +4,8 @@
   @include("partials.index.banner")
 @endguest
 
+
+@auth
 <section class="vds-main">
     <div class="vidz-row">
         <div class="container">
@@ -46,5 +48,6 @@
     </div>
 </section>
 <!--vds-main end-->
+@endauth
 
 @endsection

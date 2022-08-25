@@ -31,6 +31,7 @@ class CreateVideosTable extends Migration
             $table->string('thumb')->nullable();
             $table->longText('content')->nullable();
             $table->timestamp('published_at')->nullable();
+            $table->boolean('is_public')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -38,6 +39,11 @@ class CreateVideosTable extends Migration
         Schema::create('video_categories', function (Blueprint $table) {
             $table->foreignId('video_id')->constrained('videos')->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('vid_categories')->cascadeOnDelete();
+        });
+
+        Schema::create('video_readers', function (Blueprint $table) {
+            $table->foreignId('video_id')->constrained('videos')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });
     }
 

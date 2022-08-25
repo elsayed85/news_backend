@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>
-        {{ config('app.name') }} - @yield('title')
-    </title>
+    <title>{{ $page_title ? "{$page_title} - " : null }} {{ config('app.name') }}</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('main/images/Favicon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
@@ -25,6 +24,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/main/css/news.css') }}">
     @livewireStyles
     @yield('after_css')
+
+    <script>
+        var site_url = "{{ url('/') }}"
+    </script>
 </head>
 
 
@@ -77,25 +80,29 @@
                 </ul>
             </div>
             @auth
-            <div class="sd_menu">
-                <ul class="mm_menu">
-                    <li>
-                        <span>
-                            <i class="icon-settings"></i>
-                        </span>
-                        <a href="{{ route('filament.pages.profile') }}" title="">الاعدادات</a>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="icon-logout"></i>
-                        </span>
-                        <a href="#"  onclick="event.preventDefault(); document.getElementById('filament_logout').submit();">تسجيل الخروج</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="sd_menu m_linkz">
-                <span>{{ auth()->user()->name }}</span>
-            </div>
+                <div class="sd_menu">
+                    <ul class="mm_menu">
+                        @hasanyrole('super_admin|writer')
+                            <li>
+                                <span>
+                                    <i class="icon-settings"></i>
+                                </span>
+                                <a href="{{ route('filament.pages.profile') }}" title="">الاعدادات</a>
+                            </li>
+                        @endrole
+                        <li>
+                            <span>
+                                <i class="icon-logout"></i>
+                            </span>
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('filament_logout').submit();">تسجيل
+                                الخروج</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sd_menu m_linkz">
+                    <span>{{ auth()->user()->name }}</span>
+                </div>
             @endauth
             <div class="dd_menu"></div>
         </div>
@@ -131,7 +138,7 @@
     <!--wrapper end-->
 
     <form method="post" action="{{ route('filament.auth.logout') }}" id="filament_logout">
-    {{ csrf_field() }}
+        {{ csrf_field() }}
     </form>
 
     @yield('before_js')
@@ -151,15 +158,15 @@
                 themeColor: '#ce2525',
                 direction: 'rtl',
                 source: {
-					type:'json',
-					url:'{{ route('breakingnews.get_posts') }}',
-					limit:20,
-					showingField:'title',
-					linkEnabled: true,
-					target:'_blank',
-					seperator: '<span class="bn-seperator" style="background-image:url({{ asset('images/logo.gif') }});"></span>',
-					errorMsg: 'Json file not loaded. Please check the settings.'
-				}
+                    type: 'json',
+                    url: '{{ route('breakingnews.get_posts') }}',
+                    limit: 20,
+                    showingField: 'title',
+                    linkEnabled: true,
+                    target: '_blank',
+                    seperator: '<span class="bn-seperator" style="background-image:url({{ asset('images/logo.gif') }});"></span>',
+                    errorMsg: 'Json file not loaded. Please check the settings.'
+                }
             });
         }
         init_breakingNews();
@@ -171,6 +178,9 @@
     </script>
     @livewireScripts
     {{-- @livewire('notifications') --}}
+    @auth
+        <script src="{{ asset('main/js/online_users.js') }}"></script>
+    @endauth
     @yield('after_js')
     <x-impersonate::banner style='light' />
 </body>

@@ -8,12 +8,13 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use function now;
 
+use function now;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -55,6 +56,7 @@ class PostResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->reactive()
+                            ->label('عنوان الخبر')
                             ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
                         Forms\Components\TextInput::make('slug')
@@ -63,7 +65,7 @@ class PostResource extends Resource
                             ->unique(Post::class, 'slug', fn ($record) => $record),
 
                         CharcountedTextarea::make('excerpt')
-                            ->label('Excerpt')
+                            ->label('اختصار محتوي اخبر')
                             ->rows(4)
                             ->hintIcon('heroicon-o-code')
                             ->helperText('اختصر الخبر فى حدود 50 إلي 1000 حرف')
@@ -80,30 +82,50 @@ class PostResource extends Resource
                             ->directory('blog')
                             ->columnSpan([
                                 'sm' => 2,
-                            ]),
+                            ])
+                            ->label('الغلاف'),
 
                         SpatieMediaLibraryFileUpload::make('attachments')
                             ->multiple()
                             ->maxFiles(5)
                             ->columnSpan([
                                 'sm' => 2,
-                            ]),
+                            ])
+                            ->label('المرفقات'),
 
-                        self::getContentEditor('content'),
+                        self::getContentEditor('content')->label('محتوي الخبر'),
 
                         Forms\Components\BelongsToSelect::make('blog_author_id')
                             ->relationship('author', 'name')
                             ->searchable()
-                            ->required(),
+                            ->required()
+                            ->label('الكاتب'),
 
                         Forms\Components\BelongsToSelect::make('blog_category_id')
                             ->relationship('category', 'name')
                             ->searchable()
-                            ->required(),
+                            ->required()
+                            ->label('القسم'),
 
-                        DateTimePicker::make('published_at')
-                            ->label('Published Date'),
-                        SpatieTagsInput::make('tags'),
+                        SpatieTagsInput::make('tags')
+                            ->required()
+                            ->label('الأوسمه'),
+
+                        Forms\Components\DatePicker::make('published_at')
+                            ->label('موعد النشر'),
+
+                        Toggle::make('is_public')
+                            ->label("النشر للعامه ؟")
+                            ->inline(false)
+                            ->onIcon('heroicon-s-lightning-bolt')
+                            ->onColor('success')
+                            ->offColor('secondary'),
+
+                        Forms\Components\MultiSelect::make('video_readers')
+                            ->label("القراء")
+                            ->relationship('readers', 'name')
+                            ->searchable()
+                            ->required(),
                     ])
                     ->columns([
                         'sm' => 2,

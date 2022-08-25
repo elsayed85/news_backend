@@ -11,7 +11,15 @@
                       </a>
                   </div>
                   <!--menu_logo end-->
-                  @livewire('site.videos-search-bar')
+                  <div class="search_form">
+                      <form action="">
+                          <input type="text" name="search" placeholder="اكتب هنا واضغط Enter" name="query_text">
+                          <button type="submit">
+                              <i class="icon-search"></i>
+                          </button>
+                      </form>
+                  </div>
+
 
                   <!--search_form end-->
                   <ul class="controls-lv">
@@ -23,12 +31,15 @@
                               <div class="account-menu">
                                   <div class="sd_menu">
                                       <ul class="mm_menu">
-                                          <li>
-                                              <span>
-                                                  <i class="icon-settings"></i>
-                                              </span>
-                                              <a href="{{ route('filament.pages.profile') }}">الاعدادات</a>
-                                          </li>
+                                          @hasanyrole('super_admin|writer')
+                                              <li>
+                                                  <span>
+                                                      <i class="icon-settings"></i>
+                                                  </span>
+                                                  <a href="{{ route('filament.pages.profile') }}" title="">الاعدادات</a>
+                                              </li>
+                                          @endrole
+
                                           <li>
                                               <span>
                                                   <i class="icon-logout"></i>
@@ -49,10 +60,14 @@
                           </li>
                       @endguest
 
-                      <li>
-                          <a href="{{ route('filament.resources.videos/videos.create') }}" class="btn-default">ارفع
-                              فيديو</a>
-                      </li>
+                      @auth
+                          @role('writer')
+                              <li>
+                                  <a href="{{ route('filament.resources.videos/videos.create') }}" class="btn-default">ارفع
+                                      فيديو</a>
+                              </li>
+                          @endrole
+                      @endauth
                   </ul>
                   <!--controls-lv end-->
                   <div class="clearfix"></div>

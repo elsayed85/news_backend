@@ -47,14 +47,14 @@ class MakeShieldGenerateCommand extends Command
         return  collect($resources)
             ->values()
             ->each(function ($entity) {
-                if (config('filament-shield.generator.option') === 'policies_and_permissions') {
-                    $this->copyStubToApp('DefaultPolicy', $this->generatePolicyPath($entity), $this->generatePolicyStubVariables($entity));
-                    FilamentShield::generateForResource($entity['resource']);
-                }
+                // if (config('filament-shield.generator.option') === 'policies_and_permissions') {
+                //     $this->copyStubToApp('DefaultPolicy', $this->generatePolicyPath($entity), $this->generatePolicyStubVariables($entity));
+                //     FilamentShield::generateForResource($entity['resource']);
+                // }
 
-                if (config('filament-shield.generator.option') === 'policies') {
-                    $this->copyStubToApp('DefaultPolicy', $this->generatePolicyPath($entity), $this->generatePolicyStubVariables($entity));
-                }
+                // if (config('filament-shield.generator.option') === 'policies') {
+                //     $this->copyStubToApp('DefaultPolicy', $this->generatePolicyPath($entity), $this->generatePolicyStubVariables($entity));
+                // }
 
                 if (config('filament-shield.generator.option') === 'permissions') {
                     FilamentShield::generateForResource($entity['resource']);

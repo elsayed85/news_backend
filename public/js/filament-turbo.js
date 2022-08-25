@@ -1,3 +1,4 @@
+"use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["/js/filament-turbo"],{
 
 /***/ "./node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js":
@@ -6,7 +7,6 @@
   \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PageRenderer": () => (/* binding */ PageRenderer),
@@ -3373,7 +3373,6 @@ start();
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_libs_turbo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/libs/turbo */ "./resources/js/libs/turbo.js");
 
@@ -3386,7 +3385,6 @@ __webpack_require__.r(__webpack_exports__);
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -3459,4 +3457,8 @@ document.addEventListener('turbo:before-render', function () {
 /***/ })
 
 },
-0,[["./resources/filament/filament-turbo.js","/js/manifest"]]]);
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./resources/filament/filament-turbo.js"));
+/******/ }
+]);

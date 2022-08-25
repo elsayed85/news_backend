@@ -62,6 +62,7 @@ class Post extends Model implements HasMedia
     protected $casts = [
         'published_at' => 'date',
         "attachments" => "array",
+        "is_public" => "boolean"
     ];
 
     /**
@@ -86,6 +87,16 @@ class Post extends Model implements HasMedia
         return $query->whereNull('published_at');
     }
 
+    public function scopePublic(Builder $query)
+    {
+        return $query->where('is_public', true);
+    }
+
+    public function scopePrivate(Builder $query)
+    {
+        return $query->where('is_public', false);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -99,6 +110,11 @@ class Post extends Model implements HasMedia
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'blog_category_id');
+    }
+
+    public function readers()
+    {
+        return $this->belongsToMany(User::class, 'blog_posts_readers', 'post_id', 'user_id');
     }
 
     public function registerMediaCollections(): void

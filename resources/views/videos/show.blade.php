@@ -9,11 +9,6 @@
 @endsection
 
 @section('main_content')
-    @guest
-        @include('partials.index.banner')
-    @endguest
-
-
     <section class="mn-sec full_wdth_single_video">
         <div class="container">
             <div class="row gap_remove">

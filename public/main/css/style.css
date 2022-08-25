@@ -32,13 +32,13 @@
 
 
 
-/* ================================================================================== 
+/* ==================================================================================
 									Fonts
 ===================================================================================== */
 
 @import url('https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,500i,700,700i&display=swap');
 
-/* ================================================================================== 
+/* ==================================================================================
 										Reset Css
 ===================================================================================== */
 
@@ -51,8 +51,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -63,7 +63,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -191,7 +191,7 @@ nav ul li a,
 .signup_form,
 .overlay:before,
 button,
-.upload-videooz form label, 
+.upload-videooz form label,
 .youtube-dwn form button,
 .vid_thums li a,
 .vid_thums li a svg rect,
@@ -578,7 +578,7 @@ nav ul ul li a span {
 
 
 
-/* ============== SHARE LINKS ============= */ 
+/* ============== SHARE LINKS ============= */
 
 
 .shr_links {
@@ -937,11 +937,11 @@ svg:hover path {
     width: 1em;
     height: 3px;
 }
- 
+
 .btm_bar_content::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
- 
+
 .btm_bar_content::-webkit-scrollbar-thumb {
   background-color: #e8a32c;
   outline: 1px solid #e8a32c;
@@ -1001,7 +1001,7 @@ svg:hover path {
 	margin-top: 17px;
 	font-size: 22px;
 	color: #1c1b1b;
-} 
+}
 .info-pr{
 	margin-top:18px;
 }
@@ -1037,7 +1037,7 @@ svg:hover path {
 .pr_links li button i.icon-thumbs_down {
 	position: relative;
 	top: 2px;
-} 
+}
 .pr_links li span{
 	margin:0;
 	display:inline-block;
@@ -1100,7 +1100,7 @@ svg:hover path {
 	text-transform:uppercase;
 	background-color: #8f4fc2;
 	float:left;
-	
+
 }
 
 
@@ -1168,7 +1168,7 @@ svg:hover path {
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 23px;
-	
+
 }
 .info-sr span{
 	display: inline-block;
@@ -1457,7 +1457,7 @@ svg:hover path {
 .tr-lst {
 	float:right;
 	text-align:right;
-}		
+}
 .tr-lst li {
 	display:inline-block;
 
@@ -1640,7 +1640,7 @@ svg:hover path {
 }
 .video_info.sr{
 	width: calc(100% - 255px);
-	float:left;	
+	float:left;
 	position: relative;
 	padding: 17px 70px 0 29px;
 }
@@ -1687,7 +1687,7 @@ svg:hover path {
 }
 .vid-title-sec .title-hd {
 	margin-bottom: 8px;
-} 
+}
 .vid-title-sec form input, .vid-title-sec form textarea{
 	font-weight: 400;
 	font-size: 16px;
@@ -2358,7 +2358,7 @@ strong {
 .history-lst .nav-tabs .nav-link.live_vd.active .live_sign {
 	opacity: 1;
 	visibility: visible;
-} 
+}
 .history-lst .nav-tabs .nav-link:before {
 	content: '';
 	position: absolute;
@@ -3262,7 +3262,7 @@ select::-ms-expand {
 .playlist_view {
 	background-color: #e2ebef;
 	padding: 23px 0 0;
-	min-width: 450px;
+	min-width: 355px;
 	overflow: hidden;
 }
 .playlist_hd {
@@ -3358,7 +3358,7 @@ select::-ms-expand {
 }
 .video_main .vid-pr {
 	height: 460px;
-} 
+}
 .video_main .vid-1 .vid-info {
 	margin-top: 25px;
 }
@@ -3612,7 +3612,7 @@ select::-ms-expand {
 	padding-left: 15px;
     padding-top: 11px;
     opacity: 0.7;
-} 
+}
 .side_menu .dp_ul li span.act_status {
 	margin-top: 8px;
 }
@@ -3929,14 +3929,14 @@ header.hp_1 .side_links li.user_contrl {
 	height: 36px;
 	line-height: 36px;
 	font-size: 16px;
-} 
+}
 
 
 
 /* ======================= BANNER SECTION ========================= */
 
 .banner-section {
-	background-image: url(../images/resources/banner-img.jpg);
+	background-image: url(../images/back.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 200px 0;
@@ -4507,7 +4507,7 @@ header.hp_1 .side_links li.user_contrl {
 }
 .account-menu .mm_menu li i {
 	font-size: 20px;
-} 
+}
 .account-menu .mm_menu li > i {
 	font-size: 8px;
 	top: -5px;
@@ -4544,7 +4544,7 @@ header.hp_1 .side_links li.user_contrl {
   	top: 2px;
 }
 
-.switch input { 
+.switch input {
   	opacity: 0;
   	width: 0;
   	height: 0;

@@ -34,6 +34,7 @@ class VideosController extends Controller
             'total_videos_count' => $total_videos_count,
             'videos' => $videos,
             'related_videos' => $video->getRelatedVideos(),
+            'page_title' => $video->title
         ]);
     }
 }

@@ -27,3 +27,7 @@ Broadcast::channel('App.Device.{device_id}', function ($device , $device_id) {
 Broadcast::channel('blog_posts' , function(){
     return true;
 });
+
+Broadcast::channel('onlineusers' , function($user){
+    return $user;
+});

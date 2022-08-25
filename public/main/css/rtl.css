@@ -63,7 +63,7 @@ a.menu {
 }
 
 .banner-section {
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(0 0 0 / 38%));
+    /* background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(0 0 0 / 38%)); */
 }
 
 .vidz_list {

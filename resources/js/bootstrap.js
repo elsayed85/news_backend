@@ -34,6 +34,8 @@ import Echo from "laravel-echo";
 
 window.Pusher = require("pusher-js");
 
+window.auth_token = document.querySelector('meta[name=csrf-token]').content
+
 window.Echo = new Echo({
     broadcaster: "pusher",
     key: process.env.MIX_PUSHER_APP_KEY,
@@ -42,4 +44,32 @@ window.Echo = new Echo({
     wsHost: window.location.hostname,
     wsPort: 6001,
     disableStats: true,
+    authorizer: (channel, options) => {
+        console.log(options, channel);
+        return {
+            authorize: (socketId, callback) => {
+                axios({
+                    method: "POST",
+                    url: "/api/broadcasting/auth",
+                    headers: {
+                        Authorization: `Bearer ${auth_token}`,
+                    },
+                    data: {
+                        socket_id: socketId,
+                        channel_name: channel.name,
+                    },
+                })
+                    .then((response) => {
+                        console.log(response);
+                        console.log( "Connected")
+                        callback(false, response.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        console.log("Failed To Connect")
+                        callback(true, error);
+                    });
+            },
+        };
+    },
 });

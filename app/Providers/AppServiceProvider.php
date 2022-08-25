@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Filament\OveridedResources\AuthorResource as AuthorResource2;
 use App\Filament\OveridedResources\CategoryResource as CategoryResource2;
 use App\Filament\OveridedResources\PostResource as PostResources2;
+use App\Filament\Resources\UserResource\Pages\CreateUser as PagesCreateUser;
+use App\Filament\Resources\UserResource\Pages\EditUser as PagesEditUser;
 use App\Http\Livewire\Filament\Auth\Login as AuthLogin;
 use Filament\Facades\Filament;
 use Filament\Http\Livewire\Auth\Login;
@@ -15,6 +17,9 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\CreateUser;
+use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\EditUser;
+use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\ViewUser;
 use Stephenjude\FilamentBlog\Resources\AuthorResource;
 use Stephenjude\FilamentBlog\Resources\CategoryResource;
 use Stephenjude\FilamentBlog\Resources\PostResource;
@@ -33,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
         $loader->alias(PostResource::class, PostResources2::class);
         $loader->alias(AuthorResource::class, AuthorResource2::class);
         $loader->alias(CategoryResource::class, CategoryResource2::class);
+
+        $loader->alias(EditUser::class, PagesEditUser::class);
+        $loader->alias(CreateUser::class, PagesCreateUser::class);
+
     }
 
     /**

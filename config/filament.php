@@ -2,6 +2,8 @@
 
 use App\Filament\Widgets\WelcomeWidget;
 use App\Http\Livewire\Filament\Auth\Login;
+use App\Http\Middleware\FilamentAuthenticate;
+use App\Http\Middleware\FilamentAuthenticateBaned;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
@@ -279,7 +281,8 @@ return [
 
     'middleware' => [
         'auth' => [
-            Authenticate::class,
+            FilamentAuthenticate::class,
+            FilamentAuthenticateBaned::class
         ],
         'base' => [
             EncryptCookies::class,

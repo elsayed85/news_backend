@@ -18,7 +18,7 @@ return [
 
     'filament_user' => [
         'enabled' => true,
-        'name' => 'normal_user'
+        'name' => 'writer'
     ],
 
     'permission_prefixes' => [

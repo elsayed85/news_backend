@@ -8,6 +8,7 @@ use App\Models\Videos\Video;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -53,11 +54,13 @@ class VideoResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->reactive()
+                            ->label('عنوان الفيديو')
                             ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
                         Forms\Components\TextInput::make('slug')
                             ->disabled()
                             ->required()
+                            ->label('رابط الفيديو')
                             ->unique(Video::class, 'slug', fn ($record) => $record),
 
                         Forms\Components\Textarea::make('excerpt')
@@ -66,7 +69,8 @@ class VideoResource extends Resource
                             ->maxLength(1000)
                             ->columnSpan([
                                 'sm' => 2,
-                            ]),
+                            ])
+                            ->label('اختصار محتوي الفيديو'),
 
                         Forms\Components\FileUpload::make('thumb')
                             ->image()
@@ -75,7 +79,8 @@ class VideoResource extends Resource
                             ->directory('videos_thumb')
                             ->columnSpan([
                                 'sm' => 2,
-                            ]),
+                            ])
+                            ->label('صورة الغلاف'),
 
                         SpatieMediaLibraryFileUpload::make('Videos')
                             ->multiple()
@@ -83,19 +88,36 @@ class VideoResource extends Resource
                             ->maxFiles(5)
                             ->columnSpan([
                                 'sm' => 2,
-                            ]),
+                            ])
+                            ->label('الفيديوهات'),
 
-                        self::getContentEditor('content'),
+                        self::getContentEditor('content')->label('المحتوي'),
 
 
                         Forms\Components\MultiSelect::make('categories')
                             ->relationship('categories', 'name')
                             ->searchable()
-                            ->required(),
+                            ->required()
+                            ->label('الاقسام'),
+
+                        SpatieTagsInput::make('tags')
+                            ->required()
+                            ->label('الأوسمه'),
 
                         Forms\Components\DatePicker::make('published_at')
-                            ->label('Published Date'),
-                        SpatieTagsInput::make('tags')
+                            ->label('موعد النشر'),
+
+                        Toggle::make('is_public')
+                            ->label("النشر للعامه ؟")
+                            ->inline(false)
+                            ->onIcon('heroicon-s-lightning-bolt')
+                            ->onColor('success')
+                            ->offColor('secondary'),
+
+                        Forms\Components\MultiSelect::make('video_readers')
+                            ->label("القراء")
+                            ->relationship('readers', 'name')
+                            ->searchable()
                             ->required(),
                     ])
                     ->columns([

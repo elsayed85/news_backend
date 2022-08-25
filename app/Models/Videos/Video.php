@@ -23,6 +23,15 @@ class Video extends Model implements HasMedia
     protected $dates = ['deleted_at', 'published_at'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_public' => 'boolean',
+    ];
+
+    /**
      * The "booting" method of the model.
      *
      * @return void
@@ -46,6 +55,11 @@ class Video extends Model implements HasMedia
         return $this->belongsToMany(Category::class, 'video_categories', 'video_id', 'category_id');
     }
 
+    public function readers()
+    {
+        return $this->belongsToMany(User::class, 'video_readers', 'video_id', 'user_id');
+    }
+
     public function getThumb()
     {
         return $this->thumb ??  asset("main/images/resources/vide1.png");
@@ -54,6 +68,16 @@ class Video extends Model implements HasMedia
     public function scopePublished(Builder $query)
     {
         return $query->whereNotNull('published_at')->whereNull('deleted_at');
+    }
+
+    public function scopePublic(Builder $query)
+    {
+        return $query->where('is_public', true);
+    }
+
+    public function scopePrivate(Builder $query)
+    {
+        return $query->where('is_public', false);
     }
 
     public function scopeDraft(Builder $query)
@@ -81,7 +105,8 @@ class Video extends Model implements HasMedia
         $this->addMediaCollection('videos');
     }
 
-    public function getRelatedVideos(){
+    public function getRelatedVideos()
+    {
         return Video::withAnyTags($this->tags)->get();
     }
 }

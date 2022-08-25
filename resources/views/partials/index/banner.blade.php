@@ -4,7 +4,7 @@
               <h2>
                   مرحبا بك فى شبكة أخبار هيئة الاستخبارات العسكريه
               </h2>
-              <a href="#" title="">إنشاء حساب ؟</a>
+              <a href="{{ route('filament.auth.login') }}" title="">تسجيل الدخول  ؟</a>
           </div>
       </div>
   </section>

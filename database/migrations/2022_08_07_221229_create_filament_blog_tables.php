@@ -40,7 +40,13 @@ return new class () extends Migration {
             $table->string('banner')->nullable();
             $table->longText('content');
             $table->timestamp('published_at')->nullable();
+            $table->boolean('is_public')->default(true);
             $table->timestamps();
+        });
+
+        Schema::create('blog_posts_readers', function (Blueprint $table) {
+            $table->foreignId('post_id')->constrained('blog_posts')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });
     }
 

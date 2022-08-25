@@ -6,6 +6,7 @@ use App\Models\Device;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Stephenjude\FilamentBlog\Models\Author;
 use Stephenjude\FilamentBlog\Models\Category;
 use Stephenjude\FilamentBlog\Models\Post;
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->count(2)->create();
+        dd('');
         // $device = Device::factory()->count(1)->create([
         //     'public_key' => "1",
         //     'private_key' =>  Hash::make("1")
@@ -26,9 +29,19 @@ class DatabaseSeeder extends Seeder
 
         // Device::factory()->count(3)->create();
 
+        // super_admin and normal user already created with filament install command
+        Role::create([
+            'name' => 'normal_user',
+            'guard_name' => config('filament.auth.guard')
+        ]);
+
+
+        User::factory()->count(2)->create()->each(function ($user) {
+            $user->assignRole('writer');
+        });
 
         // users
-        User::factory()->count(20)->create()->each(function ($user) {
+        User::factory()->count(3)->create()->each(function ($user) {
             $user->assignRole('normal_user');
         });
 
