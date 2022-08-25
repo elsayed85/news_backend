@@ -32,7 +32,7 @@ add notification section to  normal users
 show "upload button" to writers only => done
 
 fix search
-show online loged in users
+show online loged in users => true
 hide everysthing from guests => done
 redirect normal_users to homepage => done
 add attachments to posts => done

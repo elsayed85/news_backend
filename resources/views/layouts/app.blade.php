@@ -112,6 +112,7 @@
 
         {{-- @include('partials.index.footer_logo') --}}
 
+        @auth
         <section class="demo-section-box">
             <div class="section-container">
                 <div class="demo-box">
@@ -134,6 +135,7 @@
                 </div>
             </div>
         </section>
+        @endauth
     </div>
     <!--wrapper end-->
 
