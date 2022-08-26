@@ -21,7 +21,7 @@
     "filament::resources\/pages\/edit-record.form.actions.save.label": "حفظ",
     "filament::resources\/pages\/edit-record.form.actions.cancel.label": "إلغاء",
     "Copied to clipboard": "",
-    "filament::widgets\/account-widget.welcome": "مرحبا بك يا :user",
+    "filament::widgets\/account-widget.welcome": "مرحبا بك يا سيادة :user",
     "filament::widgets\/account-widget.buttons.logout.label": "تسجيل الخروج",
     "filament::widgets\/filament-info-widget.buttons.visit_documentation.label": "",
     "filament::widgets\/filament-info-widget.buttons.visit_github.label": "",
