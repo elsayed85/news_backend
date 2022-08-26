@@ -36,3 +36,6 @@ show online loged in users => DONE
 hide everysthing from guests => done
 redirect normal_users to homepage => done
 add attachments to posts => done
+
+implement watch later feature
+implement notification when adding new post or video to specific readers
