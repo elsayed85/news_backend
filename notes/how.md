@@ -4,7 +4,7 @@
 -- more info : https://beyondco.de/docs/laravel-websockets/getting-started/introduction
 
 
-# run queue : 
+# run queue with wesockets : 
 php artisan queue:work
 
 
@@ -32,7 +32,7 @@ add notification section to  normal users
 show "upload button" to writers only => done
 
 fix search
-show online loged in users => true
+show online loged in users => DONE
 hide everysthing from guests => done
 redirect normal_users to homepage => done
 add attachments to posts => done

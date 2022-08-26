@@ -95,6 +95,16 @@ class Video extends Model implements HasMedia
         return $query->orderByDesc('views_count');
     }
 
+    public function isPublished()
+    {
+        return !is_null($this->published_at);
+    }
+
+    public function isPublic()
+    {
+        return $this->is_public == true;
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');

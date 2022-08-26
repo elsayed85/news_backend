@@ -17,8 +17,14 @@ class TestController extends Controller
     public function setActiveStatus(Request $request)
     {
         $update = (bool) $request['status']
-            ? User::where('id', $request['user_id'])->update(['active_status' => 1])
-            : User::where('id', $request['user_id'])->update(['active_status' => 0]);
+            ? User::where('id', $request['user_id'])->update([
+                'active_status' => 1,
+                'last_seen_at' => now()
+            ])
+            : User::where('id', $request['user_id'])->update([
+                'active_status' => 0,
+                'last_seen_at' => now()
+            ]);
         // send the response
         return Response::json([
             'status' => $update,

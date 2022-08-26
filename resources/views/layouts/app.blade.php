@@ -26,7 +26,10 @@
     @yield('after_css')
 
     <script>
-        var site_url = "{{ url('/') }}"
+        var site_url = "{{ url('/') }}";
+        @auth()
+        var user_id = "{{ auth()->id() }}";
+        @endauth
     </script>
 </head>
 

@@ -25,6 +25,8 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
+        'last_seen_at',
+        'active_status'
     ];
 
     /**
@@ -43,6 +45,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'last_seen_at' => 'timestamp' ,
+        'active_status' => 'boolean',
     ];
 
     /**

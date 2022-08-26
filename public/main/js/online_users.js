@@ -23,6 +23,7 @@ Echo.join('onlineusers').here((users) => {
         users.push(user);
         users_count = users_count + 1;
         console.log("users count " + users_count + " new user joined")
+        console.log(user)
         setActiveStatus(1, user.id);
     })
     .leaving((user) => {
@@ -31,4 +32,9 @@ Echo.join('onlineusers').here((users) => {
         users_count = users_count - 1;
         console.log("users count " + users_count + " new user leaved")
         setActiveStatus(0, user.id);
+    });
+
+Echo.private('App.Models.User.' + user_id)
+    .notification((notification) => {
+        console.log(notification);
     });

@@ -13,6 +13,7 @@ use App\Models\FilamentBlog\Post;
 use App\Models\User;
 use App\Models\Videos\Category;
 use App\Models\Videos\Video;
+use App\Notifications\NewVideoNotify;
 use App\Services\VideoStream;
 use App\WebSocket\WebSocketHandler;
 use Filament\Notifications\Actions\Action;
@@ -61,6 +62,10 @@ Route::impersonate();
 
 
 Route::get("test", function () {
+    $reader = User::find(request('id' , 1));
+    $video = Video::find(1);
+    $n = $reader->notify(new NewVideoNotify($video));
+    dd($n);
     $post = Post::factory()->create();
     dd($post->author);
     $category2 = Category::create([
