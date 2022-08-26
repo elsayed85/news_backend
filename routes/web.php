@@ -62,10 +62,14 @@ Route::impersonate();
 
 
 Route::get("test", function () {
-    $reader = User::find(request('id' , 1));
+    $reader = User::find(request('id' , 2));
     $video = Video::find(1);
-    $n = $reader->notify(new NewVideoNotify($video));
-    dd($n);
+
+    $reader->watchedLaterVideos()->attach($video);
+
+    dd($reader->watchedLaterVideos);
+    // $n = $reader->notify(new NewVideoNotify($video));
+    // dd($n);
     $post = Post::factory()->create();
     dd($post->author);
     $category2 = Category::create([

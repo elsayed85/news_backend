@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\FilamentBlog\Post;
+use App\Models\Videos\Video;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,7 +47,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'last_seen_at' => 'timestamp' ,
+        'last_seen_at' => 'timestamp',
         'active_status' => 'boolean',
     ];
 
@@ -54,8 +56,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
-    ];
+    protected $appends = [];
 
     /**
      * @return bool
@@ -73,5 +74,15 @@ class User extends Authenticatable
     {
         // For example
         return auth()->user()->hasAnyRole(['normal_user']);
+    }
+
+    public function watchedLaterVideos()
+    {
+        return $this->belongsToMany(Video::class, (new WatchedLaterVideo)->getTable(), 'user_id', 'video_id');
+    }
+
+    public function watchedLaterPosts()
+    {
+        return $this->belongsToMany(Post::class, (new WatchedLaterPost())->getTable(), 'user_id', 'post_id');
     }
 }
