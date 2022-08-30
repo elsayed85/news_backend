@@ -42,6 +42,7 @@
         "wire-elements/spotlight": "^1.0"
     },
     "require-dev": {
+        "astrotomic/ignition-stackoverflow": "^1.7",
         "barryvdh/laravel-debugbar": "^3.5",
         "barryvdh/laravel-ide-helper": "^2.9",
         "facade/ignition": "^2.5",

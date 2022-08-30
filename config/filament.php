@@ -228,7 +228,7 @@ return [
     |
     */
 
-    'favicon' => asset('images/logo.gif'),
+    'favicon' =>  env('APP_URL') . '/images/logo.gif',
 
     /*
     |--------------------------------------------------------------------------
