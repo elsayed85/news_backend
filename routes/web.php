@@ -27,7 +27,7 @@ Route::get('/', [IndexController::class, "home"])->name('home');
 Route::middleware(config('filament.middleware.auth'))->group(function () {
     Route::get('top-watched-videos', [IndexController::class, "topWatchedVideos"])->name('top_watched_videos');
     Route::get('recent-videos', [IndexController::class, "recentVideos"])->name('recent_videos');
-    Route::get('search-videos', [IndexController::class, "videosSearch"])->name('search_in_videos');
+    Route::get('search', [IndexController::class, "Search"])->name('search');
 
     Route::get("blog/author/{author}", [AuthorController::class, 'show'])->name('blog.author.profile');
     Route::get("blog/author/{category:slug}/posts/{author}", [AuthorController::class, 'showPostsInCategory'])

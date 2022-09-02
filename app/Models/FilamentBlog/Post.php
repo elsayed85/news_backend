@@ -3,6 +3,7 @@
 namespace App\Models\FilamentBlog;
 
 use App\Models\User;
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +20,7 @@ class Post extends Model implements HasMedia
     use HasFactory;
     use HasTags;
     use InteractsWithMedia;
+    use Searchable;
 
     /**
      * The "booting" method of the model.
@@ -72,6 +74,21 @@ class Post extends Model implements HasMedia
         'banner_url',
     ];
 
+    protected $searchable = [
+        'title',
+        'excerpt'
+    ];
+
+    /**
+     * Determine if the model should be searchable.
+     *
+     * @return bool
+     */
+    public function shouldBeSearchable()
+    {
+        return $this->isPublished() && $this->isPublic();
+    }
+
     public function bannerUrl(): Attribute
     {
         return Attribute::get(fn () => asset(Storage::url($this->banner)));
@@ -122,8 +139,13 @@ class Post extends Model implements HasMedia
         $this->addMediaCollection('attachments');
     }
 
-    public function isPublished(): bool
+    public function isPublished()
     {
-        return $this->published_at !== null;
+        return !is_null($this->published_at);
+    }
+
+    public function isPublic()
+    {
+        return $this->is_public == true;
     }
 }

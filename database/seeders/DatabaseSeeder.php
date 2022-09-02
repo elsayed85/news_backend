@@ -1,9 +1,8 @@
 <?php
 
-namespace Database\Seeders;
-
 use App\Models\Device;
 use App\Models\User;
+use Database\Seeders\PostsSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -20,8 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(2)->create();
-        dd('');
+        $this->call([
+            PostsSeeder::class
+        ]);
+        dd('done');
+        // User::factory()->count(2)->create();
+        // dd('');
         // $device = Device::factory()->count(1)->create([
         //     'public_key' => "1",
         //     'private_key' =>  Hash::make("1")

@@ -11,17 +11,17 @@
                       </a>
                   </div>
                   <!--menu_logo end-->
+                  @auth
                   <div class="search_form">
-                      <form action="">
-                          <input type="text" name="search" placeholder="اكتب هنا واضغط Enter" name="query_text">
+                      <form action="{{ route('search') }}">
+                          <input type="text" placeholder="اكتب هنا واضغط Enter" name="query_text">
                           <button type="submit">
                               <i class="icon-search"></i>
                           </button>
                       </form>
                   </div>
-
-
                   <!--search_form end-->
+                  @endauth
                   <ul class="controls-lv">
                       @auth
                           <li class="user-log">

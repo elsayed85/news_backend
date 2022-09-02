@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('active_status')->default(0);
             $table->rememberToken();
-            $table->timestamps();
+           $table->timestamps();
         });
+        \DB::statement('ALTER TABLE users ADD FULLTEXT search(name, username)');
     }
 
     /**

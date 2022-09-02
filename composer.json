@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
-        "beyondcode/laravel-websockets": "^1.13",
+        "beyondcode/laravel-websockets": "^1.11",
         "bezhansalleh/filament-shield": "^2.1",
         "elsayed85/filament-password-reveal": "^1.2",
         "elsayed85/filament-quick-create": "^1.0",
@@ -42,7 +42,6 @@
         "wire-elements/spotlight": "^1.0"
     },
     "require-dev": {
-        "astrotomic/ignition-stackoverflow": "^1.7",
         "barryvdh/laravel-debugbar": "^3.5",
         "barryvdh/laravel-ide-helper": "^2.9",
         "facade/ignition": "^2.5",

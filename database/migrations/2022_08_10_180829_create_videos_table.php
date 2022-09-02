@@ -25,9 +25,9 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->string('title');
+            $table->text('title', 'title');
             $table->string('slug')->unique();
-            $table->text('excerpt')->nullable();
+            $table->text('excerpt', 'excerpt')->nullable();
             $table->string('thumb')->nullable();
             $table->longText('content')->nullable();
             $table->timestamp('published_at')->nullable();
@@ -35,6 +35,8 @@ class CreateVideosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        \DB::statement('ALTER TABLE videos ADD FULLTEXT search(title, excerpt)');
 
         Schema::create('video_categories', function (Blueprint $table) {
             $table->foreignId('video_id')->constrained('videos')->cascadeOnDelete();

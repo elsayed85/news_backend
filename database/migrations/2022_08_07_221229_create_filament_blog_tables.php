@@ -34,7 +34,7 @@ return new class () extends Migration {
             $table->id();
             $table->foreignId('blog_author_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('blog_category_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('title');
+            $table->text('title');
             $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
             $table->string('banner')->nullable();
@@ -43,6 +43,8 @@ return new class () extends Migration {
             $table->boolean('is_public')->default(true);
             $table->timestamps();
         });
+
+        \DB::statement('ALTER TABLE blog_posts ADD FULLTEXT search(title, excerpt)');
 
         Schema::create('blog_posts_readers', function (Blueprint $table) {
             $table->foreignId('post_id')->constrained('blog_posts')->cascadeOnDelete();

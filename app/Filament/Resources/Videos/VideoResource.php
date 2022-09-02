@@ -101,10 +101,11 @@ class VideoResource extends Resource
                             ->label('الاقسام'),
 
                         SpatieTagsInput::make('tags')
-                            ->required()
                             ->label('الأوسمه'),
 
-                        Forms\Components\DatePicker::make('published_at')
+                        Forms\Components\DateTimePicker::make('published_at')
+                            ->withoutSeconds()
+                            ->timezone(config('app.timezone'))
                             ->label('موعد النشر'),
 
                         Toggle::make('is_public')
@@ -117,8 +118,7 @@ class VideoResource extends Resource
                         Forms\Components\MultiSelect::make('video_readers')
                             ->label("القراء")
                             ->relationship('readers', 'name')
-                            ->searchable()
-                            ->required(),
+                            ->searchable(),
                     ])
                     ->columns([
                         'sm' => 2,

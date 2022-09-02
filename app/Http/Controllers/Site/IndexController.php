@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\FilamentBlog\Post;
 use App\Models\Videos\Video;
 use Illuminate\Http\Request;
 
@@ -34,8 +35,43 @@ class IndexController extends Controller
         ]);
     }
 
-    public function videosSearch(Request $request)
+    public function Search(Request $request)
     {
-        dd($request);
+        $show_only = collect(['videos', "posts"]);
+        $videos = collect();
+        $posts = collect();
+
+        if ($request->has('show_only')) {
+            $show_only = collect(explode(',', $request->input('show_only')));
+        }
+
+        abort_if($show_only->count() == 0, 404);
+
+        if ($show_only->count() && $show_only->contains('videos')) {
+            $videos = Video::search($request->input('query_text'))
+                ->where('published_at', "!=", null)
+                ->where('is_public', true)
+                ->paginate(8, ['*'], 'videos_page');
+        }
+
+        if ($show_only->count() && $show_only->contains('posts')) {
+            $posts = Post::search($request->input('query_text'))
+                ->where('published_at', "!=", null)
+                ->where('is_public', true)
+                ->paginate(8, ['*'], 'posts_page');
+        }
+
+        $strings = [
+            'query_text' => $request->input('query_text'),
+            'videos_page' => $videos->currentPage(),
+            'posts_page' => $posts->currentPage(),
+        ];
+
+        return view('search', [
+            'strings' => $strings,
+            'show_only' => $show_only,
+            'videos' => $videos,
+            'posts' => $posts
+        ]);
     }
 }

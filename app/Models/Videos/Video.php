@@ -3,6 +3,7 @@
 namespace App\Models\Videos;
 
 use App\Models\User;
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class Video extends Model implements HasMedia
     use SoftDeletes;
     use HasTags;
     use InteractsWithMedia;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -29,6 +31,11 @@ class Video extends Model implements HasMedia
      */
     protected $casts = [
         'is_public' => 'boolean',
+    ];
+
+    protected $searchable = [
+        'title',
+        'excerpt'
     ];
 
     /**
@@ -48,6 +55,16 @@ class Video extends Model implements HasMedia
         static::updating(function ($query) {
             $query->user_id = auth()->id();
         });
+    }
+
+    /**
+     * Determine if the model should be searchable.
+     *
+     * @return bool
+     */
+    public function shouldBeSearchable()
+    {
+        return $this->isPublished() && $this->isPublic();
     }
 
     public function categories()
