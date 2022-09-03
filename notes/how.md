@@ -25,13 +25,13 @@ pa translation:sync-missing-translation-keys
 
 
 
-fix clicking on playlist video rendering
+fix clicking on playlist video => DONE
 fix imporsnate issue rtl
 add private and public videos and posts => done
-add notification section to  normal users
+add notification section to normal users
 show "upload button" to writers only => done
 
-fix search
+fix search => done
 show online loged in users => DONE
 hide everysthing from guests => done
 redirect normal_users to homepage => done

@@ -12,15 +12,15 @@
                   </div>
                   <!--menu_logo end-->
                   @auth
-                  <div class="search_form">
-                      <form action="{{ route('search') }}">
-                          <input type="text" placeholder="اكتب هنا واضغط Enter" name="query_text">
-                          <button type="submit">
-                              <i class="icon-search"></i>
-                          </button>
-                      </form>
-                  </div>
-                  <!--search_form end-->
+                      <div class="search_form">
+                          <form action="{{ route('search') }}">
+                              <input type="text" placeholder="اكتب هنا واضغط Enter" name="query_text">
+                              <button type="submit">
+                                  <i class="icon-search"></i>
+                              </button>
+                          </form>
+                      </div>
+                      <!--search_form end-->
                   @endauth
                   <ul class="controls-lv">
                       @auth
@@ -51,6 +51,14 @@
                                       </ul>
                                   </div>
                               </div>
+                          </li>
+                          <li>
+                              <a href="{{ route('notifications.list_all') }}" title="">
+                                  <i class="icon-notification"></i>
+                                  <span class="notification-badge">
+                                    {{ getUnreadNotificationsCount() }}
+                                  </span>
+                              </a>
                           </li>
                       @endauth
 

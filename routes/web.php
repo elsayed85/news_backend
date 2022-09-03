@@ -6,7 +6,9 @@ use App\Events\Blog\Post\PostPublished;
 use App\Http\Controllers\Blog\AuthorController;
 use App\Http\Controllers\Blog\PostsController;
 use App\Http\Controllers\BreakingNewsController;
+use App\Http\Controllers\DownloadMediaController;
 use App\Http\Controllers\Site\IndexController;
+use App\Http\Controllers\Site\NotificationController;
 use App\Http\Controllers\Site\VideosController;
 use App\Http\Controllers\TestController;
 use App\Models\FilamentBlog\Post;
@@ -37,7 +39,7 @@ Route::middleware(config('filament.middleware.auth'))->group(function () {
 
     Route::get("videos/{video:slug}", [VideosController::class, "show"])->name('videos.show');
 
-    Route::get("blog/post/{post}", [PostsController::class, 'show'])->name('blog.post.show');
+    Route::get("blog/post/{post:slug}", [PostsController::class, 'show'])->name('blog.post.show');
 
     Route::get("posts", [BreakingNewsController::class, "getRecentPosts"])->name('breakingnews.get_posts');
 
@@ -53,6 +55,9 @@ Route::middleware(config('filament.middleware.auth'))->group(function () {
 
         return response("File doesn't exists", 404);
     })->name('video.source');
+
+    Route::get("media/{mediaItem}", [DownloadMediaController::class, "show"])->name('media.download');
+    Route::get("notifications", [NotificationController::class, "listAll"])->name('notifications.list_all');
 });
 
 
@@ -62,7 +67,11 @@ Route::impersonate();
 
 
 Route::get("test", function () {
-    $reader = User::find(request('id' , 2));
+    $user = User::first();
+
+    $user->notify(new App\Notifications\RealTimeNotification("info" , 'Hello Worlewrot3ud'));
+    dd('done');
+    $reader = User::find(request('id', 2));
     $video = Video::find(1);
 
     $reader->watchedLaterVideos()->attach($video);

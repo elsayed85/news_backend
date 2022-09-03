@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SiteBaseController;
 use App\Models\Videos\Video;
 use Illuminate\Http\Request;
 
-class VideosController extends Controller
+class VideosController extends SiteBaseController
 {
     public function show(Request $request, Video $video)
     {
+        abort_unless($video->isPublic() && $video->isPublished() , 404);
         $video->load([
             'author',
             'categories',
@@ -34,7 +36,7 @@ class VideosController extends Controller
             'total_videos_count' => $total_videos_count,
             'videos' => $videos,
             'related_videos' => $video->getRelatedVideos(),
-            'page_title' => $video->title
+            'page_title' => $video->title,
         ]);
     }
 }

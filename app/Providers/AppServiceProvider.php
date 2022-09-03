@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Phpsa\FilamentAuthentication\Resources\UserResource\Pages\CreateUser;
@@ -41,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
 
         $loader->alias(EditUser::class, PagesEditUser::class);
         $loader->alias(CreateUser::class, PagesCreateUser::class);
-
     }
 
     /**

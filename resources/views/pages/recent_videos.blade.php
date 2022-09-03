@@ -13,9 +13,7 @@
                 <div class="vidz_list">
                     <div class="row">
                         @foreach ($videos as $video)
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 full_wdth">
                             @include('partials.index.single_video_box'  , ['video' => $video])
-                        </div>
                         @endforeach
                     </div>
                     {{ $videos->links() }}

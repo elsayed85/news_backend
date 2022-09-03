@@ -4,7 +4,6 @@
   @include("partials.index.banner")
 @endguest
 
-
 @auth
 <section class="vds-main">
     <div class="vidz-row">
@@ -15,9 +14,7 @@
                 <div class="vidz_list">
                     <div class="row">
                         @foreach ($recent_videos as $video)
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 full_wdth">
                             @include('partials.index.single_video_box'  , ['video' => $video])
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -35,9 +32,7 @@
                 <div class="vidz_list">
                     <div class="row">
                         @foreach ($top_watched_videos as $video)
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6 full_wdth">
                             @include('partials.index.single_video_box'  , ['video' => $video])
-                        </div>
                         @endforeach
                     </div>
                 </div>

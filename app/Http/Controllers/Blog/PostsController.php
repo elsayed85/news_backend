@@ -10,6 +10,9 @@ class PostsController extends Controller
 {
     public function show(Post $post)
     {
-        dd($post);
+        return view('blog.posts.show', [
+            'post' => $post,
+            'attachments' => $post->getMedia()
+        ]);
     }
 }
